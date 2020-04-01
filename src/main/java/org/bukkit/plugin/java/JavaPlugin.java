@@ -1,12 +1,14 @@
 package org.bukkit.plugin.java;
 
 import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 import org.bonge.bukkit.server.plugin.BongePluginManager;
 import org.bonge.bukkit.server.plugin.loader.BongePluginLoader;
 import org.bonge.bukkit.server.plugin.loader.BongeURLClassLoader;
 import org.bonge.bukkit.server.plugin.loader.IBongePluginLoader;
 import org.bonge.config.BongeConfig;
 import org.bonge.launch.BongeLaunch;
+import org.bonge.util.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
@@ -20,12 +22,11 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 public abstract class JavaPlugin extends PluginBase {
 
@@ -64,22 +65,59 @@ public abstract class JavaPlugin extends PluginBase {
     @Nullable
     @Override
     public InputStream getResource(@NotNull String filename) {
-        return Bukkit.class.getClassLoader().getResourceAsStream(filename);
+        return ((BongePluginManager)Bukkit.getServer().getPluginManager()).getLoader().getResourceAsStream(filename);
     }
 
     @Override
     public void saveConfig() {
-
+        try {
+            getConfig().save(this.getConfigFile());
+        } catch (IOException e) {
+            System.out.println("Could not save config to " + this.getConfigFile().getAbsolutePath());
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void saveDefaultConfig() {
-
+        if(!getConfigFile().exists()){
+            saveResource("config.yml", false);
+        }
     }
 
     @Override
     public void saveResource(@NotNull String resourcePath, boolean replace) {
+        if(resourcePath == null || resourcePath.equals("")){
+            throw new IllegalStateException("Unknown resource path");
+        }
+        resourcePath = resourcePath.replaceAll(Pattern.quote("\\"), "/");
+        InputStream stream = this.getResource(resourcePath);
+        if(stream == null){
+            throw new IllegalStateException("Unknown resource file at '" + resourcePath + "'");
+        }
 
+        File outputFile = new File(this.getDataFolder(), resourcePath);
+        int lastIndex = resourcePath.lastIndexOf('/');
+        File outputFolder = new File(this.getDataFolder(), resourcePath.substring(0, lastIndex >= 0 ? lastIndex : 0));
+        if(outputFolder.exists()){
+            outputFolder.mkdirs();
+        }
+        try{
+            if((!outputFile.exists()) || replace){
+                FileOutputStream fos = new FileOutputStream(outputFile);
+                int read;
+                while((read = stream.read()) != -1){
+                    fos.write(read);
+                }
+                fos.flush();
+                fos.close();
+                stream.close();
+                return;
+            }
+            throw new IllegalStateException("Could not save '" + outputFile.getAbsolutePath() + "' due to another file being in its placed");
+        }catch (IOException e){
+            throw new IllegalStateException("Could not save '" + outputFile.getAbsolutePath() + "'", e);
+        }
     }
 
     @Override
@@ -87,6 +125,7 @@ public abstract class JavaPlugin extends PluginBase {
         this.storedConfig = YamlConfiguration.loadConfiguration(this.getConfigFile());
         InputStream stream = this.getResource("config.yml");
         if(stream == null){
+            System.err.println("No default config found for '" + this.getName() + "': using blank");
             return;
         }
         this.storedConfig.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(stream, Charsets.UTF_8)));

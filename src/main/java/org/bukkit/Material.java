@@ -36,13 +36,13 @@ public enum Material implements Keyed {
     ACACIA_SLAB(BlockTypes.WOODEN_SLAB),
     ACACIA_STAIRS(BlockTypes.ACACIA_STAIRS),
     ACACIA_TRAPDOOR(BlockTypes.TRAPDOOR),
-    //NOT 1.12.2 ACACIA_WOOD(BlockTypes.LOG),
+    //ACACIA_WOOD(BlockTypes.LOG),
     ACTIVATOR_RAIL(BlockTypes.ACTIVATOR_RAIL),
     AIR(BlockTypes.AIR),
-    //NOT 1.12.2 ALLIUM(BlockTypes.ALLIUM),
-    /*ANDESITE(25975),
-    ANVIL(18718, Directional.class),
-    APPLE(7720),
+    //ALLIUM(BlockTypes.ALLIUM),
+    //ANDESITE(25975),
+    ANVIL(BlockTypes.ANVIL),
+    /*APPLE(7720),
     ARMOR_STAND(12852, 16),
     ARROW(31091),
     ATTACHED_MELON_STEM(30882, Directional.class),
@@ -51,9 +51,9 @@ public enum Material implements Keyed {
     BAKED_POTATO(14624),*/
     BARRIER(BlockTypes.BARRIER),
     /*BAT_SPAWN_EGG(14607),
-    BEACON(6608),
-    BEDROCK(23130),
-    BEEF(4803),
+    BEACON(6608),*/
+    BEDROCK(BlockTypes.BEDROCK),
+    /*BEEF(4803),
     BEETROOT(23305),
     BEETROOTS(22075, Ageable.class),
     BEETROOT_SEEDS(21282),
@@ -185,9 +185,9 @@ public enum Material implements Keyed {
     COD_SPAWN_EGG(27248),
     COMMAND_BLOCK(4355, CommandBlock.class),
     COMMAND_BLOCK_MINECART(7992, 1),
-    COMPARATOR(18911, Comparator.class),
-    COMPASS(24139),
-    CONDUIT(5148, Waterlogged.class),
+    COMPARATOR(18911, Comparator.class),*/
+    COMPASS(ItemTypes.COMPASS),
+    /*CONDUIT(5148, Waterlogged.class),
     COOKED_BEEF(21595),
     COOKED_CHICKEN(20780),
     COOKED_COD(9681),
@@ -301,11 +301,11 @@ public enum Material implements Keyed {
     ENDER_CHEST(32349, EnderChest.class),
     ENDER_EYE(24860),
     ENDER_PEARL(5259, 16),
-    END_CRYSTAL(19090),
-    END_GATEWAY(26605),
-    END_PORTAL(16782),
-    END_PORTAL_FRAME(15480, EndPortalFrame.class),
-    END_ROD(24832, Directional.class),
+    END_CRYSTAL(19090),*/
+    END_GATEWAY(BlockTypes.END_GATEWAY),
+    END_PORTAL(BlockTypes.END_PORTAL),
+    END_PORTAL_FRAME(BlockTypes.END_PORTAL_FRAME),
+    /*END_ROD(24832, Directional.class),
     END_STONE(29686),
     END_STONE_BRICKS(20314),
     EVOKER_SPAWN_EGG(21271),
@@ -455,8 +455,8 @@ public enum Material implements Keyed {
     LEATHER_CHESTPLATE(ItemTypes.LEATHER_CHESTPLATE),
     LEATHER_HELMET(ItemTypes.LEATHER_HELMET),
     LEATHER_LEGGINGS(ItemTypes.LEATHER_LEGGINGS),
-    /*LEVER(15319, Switch.class),
-    LIGHT_BLUE_BANNER(18060, 16, Rotatable.class),
+    LEVER(BlockTypes.LEVER),
+    /*LIGHT_BLUE_BANNER(18060, 16, Rotatable.class),
     LIGHT_BLUE_BED(20957, 1, Bed.class),
     LIGHT_BLUE_CARPET(21194),
     LIGHT_BLUE_CONCRETE(29481),
@@ -573,9 +573,9 @@ public enum Material implements Keyed {
     OAK_STAIRS(5449, Stairs.class),
     OAK_TRAPDOOR(16927, TrapDoor.class),
     OAK_WOOD(7378, Orientable.class),
-    OBSERVER(10726, Observer.class),
-    OBSIDIAN(32723),
-    OCELOT_SPAWN_EGG(30080),
+    OBSERVER(10726, Observer.class),*/
+    OBSIDIAN(BlockTypes.OBSIDIAN),
+    /*OCELOT_SPAWN_EGG(30080),
     ORANGE_BANNER(4839, 16, Rotatable.class),
     ORANGE_BED(11194, 1, Bed.class),
     ORANGE_CARPET(24752),
@@ -695,9 +695,9 @@ public enum Material implements Keyed {
     RABBIT_SPAWN_EGG(26496),
     RABBIT_STEW(10611, 1),
     RAIL(13285, Rail.class),
-    REDSTONE(11233),
-    REDSTONE_BLOCK(19496),
-    REDSTONE_LAMP(8217, Lightable.class),
+    REDSTONE(11233),*/
+    REDSTONE_BLOCK(BlockTypes.REDSTONE_BLOCK),
+    /*REDSTONE_LAMP(8217, Lightable.class),
     REDSTONE_ORE(10887, Lightable.class),
     REDSTONE_TORCH(22547, Lightable.class),
     REDSTONE_WALL_TORCH(7595, RedstoneWallTorch.class),
@@ -819,9 +819,9 @@ public enum Material implements Keyed {
     TALL_GRASS(21559, Bisected.class),
     TALL_SEAGRASS(27189, Bisected.class),
     TERRACOTTA(16544),
-    TIPPED_ARROW(25164),
-    TNT(7896, TNT.class),
-    TNT_MINECART(4277, 1),
+    TIPPED_ARROW(25164),*/
+    TNT(BlockTypes.TNT),
+    /*TNT_MINECART(4277, 1),
     TORCH(6063),
     TOTEM_OF_UNDYING(10139, 1),
     TRAPPED_CHEST(18970, Chest.class),*/
@@ -861,9 +861,9 @@ public enum Material implements Keyed {
     WHITE_STAINED_GLASS_PANE(10557, GlassPane.class),
     WHITE_TERRACOTTA(20975),
     WHITE_TULIP(9742),
-    WHITE_WALL_BANNER(15967, Directional.class),
-    WHITE_WOOL(8624),
-    WITCH_SPAWN_EGG(11837),*/
+    WHITE_WALL_BANNER(15967, Directional.class),*/
+    WHITE_WOOL(BlockTypes.WOOL),
+    //WITCH_SPAWN_EGG(11837),
     WITHER_SKELETON_SKULL(BlockTypes.SKULL),
     //WITHER_SKELETON_SPAWN_EGG(10073),
     WITHER_SKELETON_WALL_SKULL(BlockTypes.SKULL),
@@ -895,6 +895,15 @@ public enum Material implements Keyed {
     ZOMBIE_WALL_HEAD(BlockTypes.SKULL),
     UNKNOWN((BlockType)null) {
 
+        @Override
+        public Optional<BlockType> getSpongeBlockValue(){
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemType> getSpongeItemValue(){
+            return Optional.empty();
+        }
     };
 
     private CatalogType type;
@@ -907,8 +916,18 @@ public enum Material implements Keyed {
         this.type = type;
     }
 
-    public Optional<CatalogType> getSpongeValue(){
-        return Optional.ofNullable(this.type);
+    public Optional<BlockType> getSpongeBlockValue(){
+        if(this.type instanceof BlockType){
+            return Optional.of((BlockType)this.type);
+        }
+        return ((ItemType)this.type).getBlock();
+    }
+
+    public Optional<ItemType> getSpongeItemValue(){
+        if(this.type instanceof ItemType){
+            return Optional.of((ItemType)this.type);
+        }
+        return ((BlockType)this.type).getItem();
     }
 
     @Deprecated
@@ -1145,10 +1164,18 @@ public enum Material implements Keyed {
         return 0;
     }
 
-    public static Material getMaterial(CatalogType type){
+    public static Material getMaterial(ItemType type){
         return Stream.of(Material.values())
-                .filter(m -> m.getSpongeValue().isPresent())
-                .filter(m -> m.getSpongeValue().get().equals(type))
+                .filter(m -> m.getSpongeItemValue().isPresent())
+                .filter(m -> m.getSpongeItemValue().get().equals(type))
+                .findAny()
+                .orElse(Material.UNKNOWN);
+    }
+
+    public static Material getMaterial(BlockType type){
+        return Stream.of(Material.values())
+                .filter(m -> m.getSpongeBlockValue().isPresent())
+                .filter(m -> m.getSpongeBlockValue().get().equals(type))
                 .findAny()
                 .orElse(Material.UNKNOWN);
     }
