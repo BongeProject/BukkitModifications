@@ -1,14 +1,11 @@
 package org.bukkit.plugin.java;
 
 import com.google.common.base.Charsets;
-import com.google.common.io.Files;
-import org.bonge.bukkit.server.plugin.BongePluginManager;
-import org.bonge.bukkit.server.plugin.loader.BongePluginLoader;
-import org.bonge.bukkit.server.plugin.loader.BongeURLClassLoader;
-import org.bonge.bukkit.server.plugin.loader.IBongePluginLoader;
+import org.bonge.bukkit.r1_13.server.plugin.BongePluginManager;
+import org.bonge.bukkit.r1_13.server.plugin.loader.BongePluginLoader;
+import org.bonge.bukkit.r1_13.server.plugin.loader.IBongePluginLoader;
 import org.bonge.config.BongeConfig;
 import org.bonge.launch.BongeLaunch;
-import org.bonge.util.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
@@ -25,6 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.*;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
@@ -32,6 +30,11 @@ public abstract class JavaPlugin extends PluginBase {
 
     private BongePluginLoader loader;
     private FileConfiguration storedConfig;
+    private UUID uuid;
+
+    public JavaPlugin(){
+        this.uuid = UUID.randomUUID();
+    }
 
     public File getConfigFile(){
         return new File(getDataFolder(), "config.yml");
@@ -98,12 +101,12 @@ public abstract class JavaPlugin extends PluginBase {
 
         File outputFile = new File(this.getDataFolder(), resourcePath);
         int lastIndex = resourcePath.lastIndexOf('/');
-        File outputFolder = new File(this.getDataFolder(), resourcePath.substring(0, lastIndex >= 0 ? lastIndex : 0));
-        if(outputFolder.exists()){
-            outputFolder.mkdirs();
-        }
         try{
-            if((!outputFile.exists()) || replace){
+            if((outputFile.exists() && replace) || !outputFile.exists()){
+                if(!outputFile.exists()){
+                    outputFile.getParentFile().createNewFile();
+                    outputFile.createNewFile();
+                }
                 FileOutputStream fos = new FileOutputStream(outputFile);
                 int read;
                 while((read = stream.read()) != -1){
@@ -114,7 +117,6 @@ public abstract class JavaPlugin extends PluginBase {
                 stream.close();
                 return;
             }
-            throw new IllegalStateException("Could not save '" + outputFile.getAbsolutePath() + "' due to another file being in its placed");
         }catch (IOException e){
             throw new IllegalStateException("Could not save '" + outputFile.getAbsolutePath() + "'", e);
         }
@@ -219,5 +221,14 @@ public abstract class JavaPlugin extends PluginBase {
 
     public void setLoader(BongePluginLoader loader){
         this.loader = loader;
+    }
+
+    public ClassLoader getClassLoader(){
+        return ((BongePluginManager)Bukkit.getServer().getPluginManager()).getLoader();
+    }
+
+    public boolean match(JavaPlugin plugin){
+        //HACK FOR PLUGINBASE
+        return this.uuid.equals(plugin.uuid);
     }
 }

@@ -327,9 +327,9 @@ public enum Material implements Keyed {
     FLINT(ItemTypes.FLINT),
     FLINT_AND_STEEL(ItemTypes.FLINT_AND_STEEL),
     /*FLOWER_POT(30567),
-    FROSTED_ICE(21814, Ageable.class),
-    FURNACE(8133, Furnace.class),
-    FURNACE_MINECART(14196, 1),
+    FROSTED_ICE(21814, Ageable.class),*/
+    FURNACE(ItemTypes.FURNACE),
+    /*FURNACE_MINECART(14196, 1),
     GHAST_SPAWN_EGG(9970),
     GHAST_TEAR(18222),
     GLASS(6195),
@@ -388,9 +388,9 @@ public enum Material implements Keyed {
     GUNPOWDER(29974),
     HAY_BLOCK(17461, Orientable.class),
     HEART_OF_THE_SEA(11807),
-    HEAVY_WEIGHTED_PRESSURE_PLATE(16970, AnaloguePowerable.class),
-    HOPPER(31974, Hopper.class),
-    HOPPER_MINECART(19024, 1),
+    HEAVY_WEIGHTED_PRESSURE_PLATE(16970, AnaloguePowerable.class),*/
+    HOPPER(BlockTypes.HOPPER),
+    /*HOPPER_MINECART(19024, 1),
     HORN_CORAL(19511, Waterlogged.class),
     HORN_CORAL_BLOCK(19958),
     HORN_CORAL_FAN(13610, Waterlogged.class),
@@ -744,9 +744,9 @@ public enum Material implements Keyed {
     SHIELD(29943, 1, 336),
     SHULKER_BOX(7776, 1, Directional.class),
     SHULKER_SHELL(27848),
-    SHULKER_SPAWN_EGG(31848),
-    SIGN(16918, 16, Sign.class),
-    SILVERFISH_SPAWN_EGG(14537),
+    SHULKER_SPAWN_EGG(31848),*/
+    SIGN(BlockTypes.STANDING_SIGN),
+    /*SILVERFISH_SPAWN_EGG(14537),
     SKELETON_HORSE_SPAWN_EGG(21356),*/
     SKELETON_SKULL(ItemTypes.SKULL),
     //SKELETON_SPAWN_EGG(15261),
@@ -823,8 +823,8 @@ public enum Material implements Keyed {
     TNT(BlockTypes.TNT),
     /*TNT_MINECART(4277, 1),
     TORCH(6063),
-    TOTEM_OF_UNDYING(10139, 1),
-    TRAPPED_CHEST(18970, Chest.class),*/
+    TOTEM_OF_UNDYING(10139, 1),*/
+    TRAPPED_CHEST(ItemTypes.TRAPPED_CHEST),
     TRIDENT(ItemTypes.WOODEN_SWORD), //temp item - 1.12 doesnt have it
     /*TRIPWIRE(8810, Tripwire.class),
     TRIPWIRE_HOOK(8130, TripwireHook.class),
@@ -842,9 +842,9 @@ public enum Material implements Keyed {
     VILLAGER_SPAWN_EGG(ItemTypes.SPAWN_EGG),
     /*VINDICATOR_SPAWN_EGG(25324),
     VINE(14564, MultipleFacing.class),
-    VOID_AIR(13668),
-    WALL_SIGN(10644, WallSign.class),
-    WALL_TORCH(25890, Directional.class),*/
+    VOID_AIR(13668),*/
+    WALL_SIGN(BlockTypes.WALL_SIGN),
+    /*WALL_TORCH(25890, Directional.class),*/
     WATER(BlockTypes.WATER),
     /*WATER_BUCKET(8802, 1),
     WET_SPONGE(9043),
