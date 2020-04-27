@@ -1,11 +1,13 @@
 package org.bukkit.material;
 
+import org.bonge.Bonge;
 import org.bonge.wrapper.BongeWrapper;
 import org.bukkit.Material;
 import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.block.BlockTypes;
 import org.spongepowered.api.item.ItemType;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @Deprecated
@@ -18,12 +20,20 @@ public class MaterialData extends BongeWrapper<BlockState> implements Cloneable 
     }
 
     public MaterialData(Material material){
-        super(material.getSpongeBlockValue().get().getDefaultState());
+        super(convert(material));
     }
 
     public MaterialData(Material material, byte data){
         this(material);
         this.data = data;
+    }
+
+    private static BlockState convert(Material material){
+        try {
+            return Bonge.getInstance().convert(material, BlockState.class);
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     public byte getData(){
@@ -37,7 +47,11 @@ public class MaterialData extends BongeWrapper<BlockState> implements Cloneable 
     public Material getItemType(){
         Optional<ItemType> opType = this.getSpongeValue().getType().getItem();
         if(opType.isPresent()){
-            return Material.getMaterial(opType.get());
+            try {
+                return Bonge.getInstance().convert(Material.class, opType.get());
+            } catch (IOException e) {
+                throw new IllegalArgumentException(e);
+            }
         }
         return null;
     }

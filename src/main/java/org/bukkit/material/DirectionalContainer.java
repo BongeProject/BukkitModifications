@@ -1,11 +1,14 @@
 package org.bukkit.material;
 
-import org.bonge.convert.EnumConvert;
+import org.bonge.Bonge;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.data.key.Keys;
+import org.spongepowered.api.util.Direction;
+
+import java.io.IOException;
 
 @Deprecated
 public class DirectionalContainer extends MaterialData implements Directional {
@@ -23,11 +26,19 @@ public class DirectionalContainer extends MaterialData implements Directional {
 
     @Override
     public void setFacingDirection(@NotNull BlockFace face) {
-        this.spongeValue = this.spongeValue.with(Keys.DIRECTION, EnumConvert.getDirection(face)).get();
+        try {
+            this.spongeValue = this.spongeValue.with(Keys.DIRECTION, Bonge.getInstance().convert(face, Direction.class)).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public @NotNull BlockFace getFacing() {
-        return EnumConvert.getFace(this.spongeValue.get(Keys.DIRECTION).get());
+        try {
+            return Bonge.getInstance().convert(BlockFace.class, this.spongeValue.get(Keys.DIRECTION).get());
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 }
