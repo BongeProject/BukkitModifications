@@ -1,13 +1,20 @@
 package org.bukkit;
 
 import org.bonge.Bonge;
-import org.bonge.bukkit.r1_13.material.BlockMaterial;
-import org.bonge.bukkit.r1_13.material.ItemMaterial;
+import org.bonge.bukkit.r1_13.material.block.BlockMaterial;
+import org.bonge.bukkit.r1_13.material.block.ExtendedBlockMaterial;
+import org.bonge.bukkit.r1_13.material.item.ExtendedItemMaterial;
+import org.bonge.bukkit.r1_13.material.item.ItemMaterial;
 import org.bonge.bukkit.r1_13.material.UnknownMaterial;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.material.MaterialData;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.api.block.BlockTypes;
+import org.spongepowered.api.data.key.Keys;
+import org.spongepowered.api.data.type.DyeColor;
+import org.spongepowered.api.data.type.DyeColors;
+import org.spongepowered.api.data.type.SkullTypes;
+import org.spongepowered.api.data.type.WallTypes;
 import org.spongepowered.api.item.ItemTypes;
 
 import java.util.Set;
@@ -18,43 +25,43 @@ import java.util.stream.Stream;
 /**
  * An enum of all material IDs accepted by the official server and client
  */
-public interface Material extends Keyed {
+public abstract class Material implements Keyed {
 
-    Material ACACIA_BOAT = new ItemMaterial(ItemTypes.ACACIA_BOAT, "ACACIA_BOAT");
-    Material ACACIA_BUTTON = new BlockMaterial(BlockTypes.WOODEN_BUTTON, "ACACIA_BUTTON");
-    Material ACACIA_DOOR = new BlockMaterial(BlockTypes.ACACIA_DOOR, "ACACIA_DOOR");
-    Material ACACIA_FENCE = new BlockMaterial(BlockTypes.ACACIA_FENCE, "ACACIA_FENCE");
-    Material ACACIA_FENCE_GATE = new BlockMaterial(BlockTypes.ACACIA_FENCE_GATE, "ACACIA_FENCE_GATE");
-    Material ACACIA_LEAVES = new BlockMaterial(BlockTypes.LEAVES, "ACACIA_LEAVES");
-    Material ACACIA_LOG = new BlockMaterial(BlockTypes.LOG, "ACACIA_LOG");
-    Material ACACIA_PLANKS = new BlockMaterial(BlockTypes.PLANKS, "ACACIA_PLANKS");
-    Material ACACIA_PRESSURE_PLATE = new BlockMaterial(BlockTypes.WOODEN_PRESSURE_PLATE, "ACACIA_PRESSURE_PLATE");
-    Material ACACIA_SAPLING = new BlockMaterial(BlockTypes.SAPLING, "ACACIA_SAPLING");
-    Material ACACIA_SLAB = new BlockMaterial(BlockTypes.WOODEN_SLAB, "ACACIA_SLAB");
-    Material ACACIA_STAIRS = new BlockMaterial(BlockTypes.ACACIA_STAIRS, "ACACIA_STAIRS");
-    Material ACACIA_TRAPDOOR = new BlockMaterial(BlockTypes.TRAPDOOR, "ACACIA_TRAPDOOR");
+    public static final Material ACACIA_BOAT = new ItemMaterial(ItemTypes.ACACIA_BOAT, "ACACIA_BOAT");
+    public static final Material ACACIA_BUTTON = new BlockMaterial(BlockTypes.WOODEN_BUTTON, "ACACIA_BUTTON");
+    public static final Material ACACIA_DOOR = new BlockMaterial(BlockTypes.ACACIA_DOOR, "ACACIA_DOOR");
+    public static final Material ACACIA_FENCE = new BlockMaterial(BlockTypes.ACACIA_FENCE, "ACACIA_FENCE");
+    public static final Material ACACIA_FENCE_GATE = new BlockMaterial(BlockTypes.ACACIA_FENCE_GATE, "ACACIA_FENCE_GATE");
+    public static final Material ACACIA_LEAVES = new BlockMaterial(BlockTypes.LEAVES, "ACACIA_LEAVES");
+    public static final Material ACACIA_LOG = new BlockMaterial(BlockTypes.LOG, "ACACIA_LOG");
+    public static final Material ACACIA_PLANKS = new BlockMaterial(BlockTypes.PLANKS, "ACACIA_PLANKS");
+    public static final Material ACACIA_PRESSURE_PLATE = new BlockMaterial(BlockTypes.WOODEN_PRESSURE_PLATE, "ACACIA_PRESSURE_PLATE");
+    public static final Material ACACIA_SAPLING = new BlockMaterial(BlockTypes.SAPLING, "ACACIA_SAPLING");
+    public static final Material ACACIA_SLAB = new BlockMaterial(BlockTypes.WOODEN_SLAB, "ACACIA_SLAB");
+    public static final Material ACACIA_STAIRS = new BlockMaterial(BlockTypes.ACACIA_STAIRS, "ACACIA_STAIRS");
+    public static final Material ACACIA_TRAPDOOR = new BlockMaterial(BlockTypes.TRAPDOOR, "ACACIA_TRAPDOOR");
     //ACACIA_WOOD = new BlockMaterial(BlockTypes.LOG);
-    Material ACTIVATOR_RAIL = new BlockMaterial(BlockTypes.ACTIVATOR_RAIL, "ACTIVATOR_RAIL");
-    Material AIR = new BlockMaterial(BlockTypes.AIR, "AIR");
+    public static final Material ACTIVATOR_RAIL = new BlockMaterial(BlockTypes.ACTIVATOR_RAIL, "ACTIVATOR_RAIL");
+    public static final Material AIR = new BlockMaterial(BlockTypes.AIR, "AIR");
     //ALLIUM = new BlockMaterial(BlockTypes.ALLIUM);
     //ANDESITE(25975);
-    Material ANVIL = new BlockMaterial(BlockTypes.ANVIL, "ANVIL");
-    Material APPLE = new ItemMaterial(ItemTypes.APPLE, "APPLE");
-    Material ARMOR_STAND = new ItemMaterial(ItemTypes.ARMOR_STAND, "ARMOR_STAND");
-    Material ARROW = new ItemMaterial(ItemTypes.ARROW, "ARROW");
-    Material ATTACHED_MELON_STEM = new BlockMaterial(BlockTypes.MELON_STEM, "ATTACHED_MELON_STEM");
-    Material ATTACHED_PUMPKIN_STEM = new BlockMaterial(BlockTypes.PUMPKIN_STEM, "ATTACHED_PUMPKIN_STEM");
+    public static final Material ANVIL = new BlockMaterial(BlockTypes.ANVIL, "ANVIL");
+    public static final Material APPLE = new ItemMaterial(ItemTypes.APPLE, "APPLE");
+    public static final Material ARMOR_STAND = new ItemMaterial(ItemTypes.ARMOR_STAND, "ARMOR_STAND");
+    public static final Material ARROW = new ItemMaterial(ItemTypes.ARROW, "ARROW");
+    public static final Material ATTACHED_MELON_STEM = new BlockMaterial(BlockTypes.MELON_STEM, "ATTACHED_MELON_STEM");
+    public static final Material ATTACHED_PUMPKIN_STEM = new BlockMaterial(BlockTypes.PUMPKIN_STEM, "ATTACHED_PUMPKIN_STEM");
     //AZURE_BLUET(17608);
-    Material BAKED_POTATO = new ItemMaterial(ItemTypes.BAKED_POTATO, "BAKED_POTATO");
-    Material BARRIER = new BlockMaterial(BlockTypes.BARRIER, "BARRIER");
+    public static final Material BAKED_POTATO = new ItemMaterial(ItemTypes.BAKED_POTATO, "BAKED_POTATO");
+    public static final Material BARRIER = new BlockMaterial(BlockTypes.BARRIER, "BARRIER");
     //BAT_SPAWN_EGG(14607);
-    Material BEACON = new BlockMaterial(BlockTypes.BEACON, "BEACON");
-    Material BEDROCK = new BlockMaterial(BlockTypes.BEDROCK, "BEDROCK");
-    Material BEEF = new ItemMaterial(ItemTypes.BEEF, "BEEF");
-    Material BEETROOT = new ItemMaterial(ItemTypes.BEETROOT, "BEETROOT");
+    public static final Material BEACON = new BlockMaterial(BlockTypes.BEACON, "BEACON");
+    public static final Material BEDROCK = new BlockMaterial(BlockTypes.BEDROCK, "BEDROCK");
+    public static final Material BEEF = new ItemMaterial(ItemTypes.BEEF, "BEEF");
+    public static final Material BEETROOT = new ItemMaterial(ItemTypes.BEETROOT, "BEETROOT");
     //BEETROOTS(22075, Ageable.class);
-    Material BEETROOT_SEEDS = new ItemMaterial(ItemTypes.BEETROOT_SEEDS, "BEETROOT_SEEDS");
-    Material BEETROOT_SOUP = new ItemMaterial(ItemTypes.BEETROOT_SOUP, "BEETROOT_SOUP");
+    public static final Material BEETROOT_SEEDS = new ItemMaterial(ItemTypes.BEETROOT_SEEDS, "BEETROOT_SEEDS");
+    public static final Material BEETROOT_SOUP = new ItemMaterial(ItemTypes.BEETROOT_SOUP, "BEETROOT_SOUP");
     /*BIRCH_BOAT(28104, 1);
     BIRCH_BUTTON(26934, Switch.class);
     BIRCH_DOOR(14759, Door.class);
@@ -79,9 +86,9 @@ public interface Material extends Keyed {
     BLACK_STAINED_GLASS(13941);
     BLACK_STAINED_GLASS_PANE(13201, GlassPane.class);
     BLACK_TERRACOTTA(26691);
-    BLACK_WALL_BANNER(4919, Directional.class);
-    BLACK_WOOL(16693);
-    BLAZE_POWDER(18941);
+    BLACK_WALL_BANNER(4919, Directional.class);*/
+    public static final Material BLACK_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.BLACK).get(), "BLACK_WOOL");
+    /*BLAZE_POWDER(18941);
     BLAZE_ROD(8289);
     BLAZE_SPAWN_EGG(4759);
     BLUE_BANNER(18481, 16, Rotatable.class);
@@ -96,25 +103,25 @@ public interface Material extends Keyed {
     BLUE_STAINED_GLASS(7107);
     BLUE_STAINED_GLASS_PANE(28484, GlassPane.class);
     BLUE_TERRACOTTA(5236);
-    BLUE_WALL_BANNER(17757, Directional.class);
-    BLUE_WOOL(15738);*/
-    Material BONE = new ItemMaterial(ItemTypes.BONE, "BONE");
-    Material BONE_BLOCK = new BlockMaterial(BlockTypes.BONE_BLOCK, "BONE_BLOCK");
+    BLUE_WALL_BANNER(17757, Directional.class);*/
+    public static final Material BLUE_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.BLUE).get(), "BLUE_WOOL");
+    public static final Material BONE = new ItemMaterial(ItemTypes.BONE, "BONE");
+    public static final Material BONE_BLOCK = new BlockMaterial(BlockTypes.BONE_BLOCK, "BONE_BLOCK");
     //BONE_MEAL();
-    Material BOOK = new ItemMaterial(ItemTypes.BOOK, "BOOK");
-    Material BOOKSHELF = new ItemMaterial(ItemTypes.BOOKSHELF, "BOOKSHELF");
-    Material BOW = new ItemMaterial(ItemTypes.BOW, "BOW");
-    Material BOWL = new ItemMaterial(ItemTypes.BOWL, "BOWL");
+    public static final Material BOOK = new ItemMaterial(ItemTypes.BOOK, "BOOK");
+    public static final Material BOOKSHELF = new ItemMaterial(ItemTypes.BOOKSHELF, "BOOKSHELF");
+    public static final Material BOW = new ItemMaterial(ItemTypes.BOW, "BOW");
+    public static final Material BOWL = new ItemMaterial(ItemTypes.BOWL, "BOWL");
     /*BRAIN_CORAL(31316, Waterlogged.class);
     BRAIN_CORAL_BLOCK(30618);
     BRAIN_CORAL_FAN(13849, Waterlogged.class);
     BRAIN_CORAL_WALL_FAN(22685, CoralWallFan.class);*/
-    Material BREAD = new ItemMaterial(ItemTypes.BREAD, "BREAD");
-    Material BREWING_STAND = new ItemMaterial(ItemTypes.BREWING_STAND, "BREWING_STAND");
-    Material BRICK = new ItemMaterial(ItemTypes.BRICK, "BRICK");
-    Material BRICKS = new BlockMaterial(BlockTypes.BRICK_BLOCK, "BRICKS");
-    //Material BRICK_SLAB = new BlockMaterial(BlockTypes.BRICK_);
-    Material BRICK_STAIRS = new BlockMaterial(BlockTypes.BRICK_STAIRS, "BRICK_STAIRS");
+    public static final Material BREAD = new ItemMaterial(ItemTypes.BREAD, "BREAD");
+    public static final Material BREWING_STAND = new ItemMaterial(ItemTypes.BREWING_STAND, "BREWING_STAND");
+    public static final Material BRICK = new ItemMaterial(ItemTypes.BRICK, "BRICK");
+    public static final Material BRICKS = new BlockMaterial(BlockTypes.BRICK_BLOCK, "BRICKS");
+    //public static final Material BRICK_SLAB = new BlockMaterial(BlockTypes.BRICK_);
+    public static final Material BRICK_STAIRS = new BlockMaterial(BlockTypes.BRICK_STAIRS, "BRICK_STAIRS");
     /*BROWN_BANNER(11481, 16, Rotatable.class);
     BROWN_BED(25624, 1, Bed.class);
     BROWN_CARPET(23352);
@@ -127,63 +134,63 @@ public interface Material extends Keyed {
     BROWN_STAINED_GLASS(20945);
     BROWN_STAINED_GLASS_PANE(17557, GlassPane.class);
     BROWN_TERRACOTTA(23664);
-    BROWN_WALL_BANNER(14731, Directional.class);
-    BROWN_WOOL(32638);
-    BUBBLE_COLUMN(13758, BubbleColumn.class);
+    BROWN_WALL_BANNER(14731, Directional.class);*/
+    public static final Material BROWN_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.BROWN).get(), "BROWN_WOOL");
+    /*BUBBLE_COLUMN(13758, BubbleColumn.class);
     BUBBLE_CORAL(12464, Waterlogged.class);
     BUBBLE_CORAL_BLOCK(15437);
     BUBBLE_CORAL_FAN(10795, Waterlogged.class);
     BUBBLE_CORAL_WALL_FAN(20382, CoralWallFan.class);*/
-    Material BUCKET = new ItemMaterial(ItemTypes.BUCKET, "BUCKET");
-    Material CACTUS = new BlockMaterial(BlockTypes.CACTUS, "CACTUS");
+    public static final Material BUCKET = new ItemMaterial(ItemTypes.BUCKET, "BUCKET");
+    public static final Material CACTUS = new BlockMaterial(BlockTypes.CACTUS, "CACTUS");
     //CACTUS_GREEN(17296);
-    Material CAKE = new BlockMaterial(BlockTypes.CAKE, "CAKE");
-    Material CARROT = new ItemMaterial(ItemTypes.CARROT, "CARROT");
-    Material CARROTS = new BlockMaterial(BlockTypes.CARROTS, "CARROTS");
-    Material CARROT_ON_A_STICK = new ItemMaterial(ItemTypes.CARROT_ON_A_STICK, "CARROT_ON_A_STICK");
-    Material CARVED_PUMPKIN = new ItemMaterial(ItemTypes.PUMPKIN, "CARVED_PUMPKIN");
-    Material CAULDRON = new BlockMaterial(BlockTypes.CAULDRON, "CAULDRON");
-    //Material CAVE_AIR = new BlockMaterial(ItemTypes.AIR);
+    public static final Material CAKE = new BlockMaterial(BlockTypes.CAKE, "CAKE");
+    public static final Material CARROT = new ItemMaterial(ItemTypes.CARROT, "CARROT");
+    public static final Material CARROTS = new BlockMaterial(BlockTypes.CARROTS, "CARROTS");
+    public static final Material CARROT_ON_A_STICK = new ItemMaterial(ItemTypes.CARROT_ON_A_STICK, "CARROT_ON_A_STICK");
+    public static final Material CARVED_PUMPKIN = new ItemMaterial(ItemTypes.PUMPKIN, "CARVED_PUMPKIN");
+    public static final Material CAULDRON = new BlockMaterial(BlockTypes.CAULDRON, "CAULDRON");
+    //public static final Material CAVE_AIR = new BlockMaterial(ItemTypes.AIR);
     //CAVE_SPIDER_SPAWN_EGG(23341);
-    Material CHAINMAIL_BOOTS = new ItemMaterial(ItemTypes.CHAINMAIL_BOOTS, "CHAINMAIL_BOOTS");
-    Material CHAINMAIL_CHESTPLATE = new ItemMaterial(ItemTypes.CHAINMAIL_CHESTPLATE, "CHAINMAIL_CHESTPLATE");
-    Material CHAINMAIL_HELMET = new ItemMaterial(ItemTypes.CHAINMAIL_HELMET, "CHAINMAIL_HELMET");
-    Material CHAINMAIL_LEGGINGS = new ItemMaterial(ItemTypes.CHAINMAIL_LEGGINGS, "CHAINMAIL_LEGGINGS");
+    public static final Material CHAINMAIL_BOOTS = new ItemMaterial(ItemTypes.CHAINMAIL_BOOTS, "CHAINMAIL_BOOTS");
+    public static final Material CHAINMAIL_CHESTPLATE = new ItemMaterial(ItemTypes.CHAINMAIL_CHESTPLATE, "CHAINMAIL_CHESTPLATE");
+    public static final Material CHAINMAIL_HELMET = new ItemMaterial(ItemTypes.CHAINMAIL_HELMET, "CHAINMAIL_HELMET");
+    public static final Material CHAINMAIL_LEGGINGS = new ItemMaterial(ItemTypes.CHAINMAIL_LEGGINGS, "CHAINMAIL_LEGGINGS");
     /*CHAIN_COMMAND_BLOCK(26798, CommandBlock.class);
     CHARCOAL(5390);*/
-    Material CHEST = new BlockMaterial(BlockTypes.CHEST, "CHEST");
-    Material CHEST_MINECART = new ItemMaterial(ItemTypes.CHEST_MINECART, "CHEST_MINECART");
-    Material CHICKEN = new ItemMaterial(ItemTypes.CHICKEN, "CHICKEN");
+    public static final Material CHEST = new BlockMaterial(BlockTypes.CHEST, "CHEST");
+    public static final Material CHEST_MINECART = new ItemMaterial(ItemTypes.CHEST_MINECART, "CHEST_MINECART");
+    public static final Material CHICKEN = new ItemMaterial(ItemTypes.CHICKEN, "CHICKEN");
     /*CHICKEN_SPAWN_EGG(5462);
     CHIPPED_ANVIL(10623, Directional.class);
     CHISELED_QUARTZ_BLOCK(30964);
     CHISELED_RED_SANDSTONE(15529);
     CHISELED_SANDSTONE(31763);
     CHISELED_STONE_BRICKS(9087);
-    CHORUS_FLOWER(28542, Ageable.class);
-    CHORUS_FRUIT(7652);
-    CHORUS_PLANT(28243, MultipleFacing.class);*/
-    Material CLAY = new ItemMaterial(ItemTypes.CLAY, "CLAY");
-    Material CLAY_BALL = new ItemMaterial(ItemTypes.CLAY_BALL, "CLAY_BALL");
-    Material CLOCK = new ItemMaterial(ItemTypes.CLOCK, "CLOCK");
-    Material COAL = new ItemMaterial(ItemTypes.COAL, "COAL");
-    Material COAL_BLOCK = new ItemMaterial(ItemTypes.COAL_BLOCK, "COAL_BLOCK");
-    Material COAL_ORE = new BlockMaterial(BlockTypes.COAL_ORE, "COAL_ORE");
-    //Material COARSE_DIRT = new BlockMaterial(BlockTypes.COARSE_DIRT, "COARSE_DIRT");
-    Material COBBLESTONE = new BlockMaterial(BlockTypes.COBBLESTONE, "COBBLESTONE");
-    //Material COBBLESTONE_SLAB = new BlockMaterial(BlockTypes.COBBLESTONE_SLAB, "COBBLESTONE_SLAB");
-    //Material COBBLESTONE_STAIRS = new BlockMaterial(BlockTypes.COBBLESTONE_STAIRS, "COBBLESTONE_STAIRS");
-    Material COBBLESTONE_WALL = new BlockMaterial(BlockTypes.COBBLESTONE_WALL, "COBBLESTONE_WALL");
-    Material COBWEB = new BlockMaterial(BlockTypes.WEB, "COBWEB");
-    Material COCOA = new BlockMaterial(BlockTypes.COCOA, "COCOA");
-    //Material COCOA_BEANS = new BlockMaterial(BlockTypes.COC);
+    CHORUS_FLOWER(28542, Ageable.class);*/
+    public static final Material CHORUS_FRUIT = new ItemMaterial(ItemTypes.CHORUS_FRUIT, "CHORUS_FRUIT");
+    public static final Material CHORUS_PLANT = new BlockMaterial(BlockTypes.CHORUS_PLANT, "CHORUS_PLANT");
+    public static final Material CLAY = new ItemMaterial(ItemTypes.CLAY, "CLAY");
+    public static final Material CLAY_BALL = new ItemMaterial(ItemTypes.CLAY_BALL, "CLAY_BALL");
+    public static final Material CLOCK = new ItemMaterial(ItemTypes.CLOCK, "CLOCK");
+    public static final Material COAL = new ItemMaterial(ItemTypes.COAL, "COAL");
+    public static final Material COAL_BLOCK = new ItemMaterial(ItemTypes.COAL_BLOCK, "COAL_BLOCK");
+    public static final Material COAL_ORE = new BlockMaterial(BlockTypes.COAL_ORE, "COAL_ORE");
+    //public static final Material COARSE_DIRT = new BlockMaterial(BlockTypes.COARSE_DIRT, "COARSE_DIRT");
+    public static final Material COBBLESTONE = new BlockMaterial(BlockTypes.COBBLESTONE, "COBBLESTONE");
+    //public static final Material COBBLESTONE_SLAB = new BlockMaterial(BlockTypes.COBBLESTONE_SLAB, "COBBLESTONE_SLAB");
+    //public static final Material COBBLESTONE_STAIRS = new BlockMaterial(BlockTypes.COBBLESTONE_STAIRS, "COBBLESTONE_STAIRS");
+    public static final Material COBBLESTONE_WALL = new BlockMaterial(BlockTypes.COBBLESTONE_WALL, "COBBLESTONE_WALL");
+    public static final Material COBWEB = new BlockMaterial(BlockTypes.WEB, "COBWEB");
+    public static final Material COCOA = new BlockMaterial(BlockTypes.COCOA, "COCOA");
+    //public static final Material COCOA_BEANS = new BlockMaterial(BlockTypes.COC);
     /*COD(24691);
     COD_BUCKET(28601, 1);
     COD_SPAWN_EGG(27248);
-    COMMAND_BLOCK(4355, CommandBlock.class);
-    COMMAND_BLOCK_MINECART(7992, 1);*/
-    Material COMPARATOR = new BlockMaterial(BlockTypes.UNPOWERED_COMPARATOR, "COMPARATOR");
-    Material COMPASS = new ItemMaterial(ItemTypes.COMPASS, "COMPASS");
+    COMMAND_BLOCK(4355, CommandBlock.class);*/
+    public static final Material COMMAND_BLOCK_MINECART = new ItemMaterial(ItemTypes.COMMAND_BLOCK_MINECART, "COMMAND_BLOCK_MINECART");
+    public static final Material COMPARATOR = new BlockMaterial(BlockTypes.UNPOWERED_COMPARATOR, "COMPARATOR");
+    public static final Material COMPASS = new ItemMaterial(ItemTypes.COMPASS, "COMPASS");
     /*CONDUIT(5148, Waterlogged.class);
     COOKED_BEEF(21595);
     COOKED_CHICKEN(20780);
@@ -195,8 +202,8 @@ public interface Material extends Keyed {
     COOKIE(27431);
     COW_SPAWN_EGG(14761);
     CRACKED_STONE_BRICKS(27869);*/
-    Material CRAFTING_TABLE = new BlockMaterial(BlockTypes.CRAFTING_TABLE, "CRAFTING_TABLE");
-    Material CREEPER_HEAD = new BlockMaterial(BlockTypes.SKULL, "CREEPER_HEAD"); //required for Bukkit API 1.13
+    public static final Material CRAFTING_TABLE = new BlockMaterial(BlockTypes.CRAFTING_TABLE, "CRAFTING_TABLE");
+    public static final Material CREEPER_HEAD = new BlockMaterial(BlockTypes.SKULL, "CREEPER_HEAD"); //required for Bukkit API 1.13
     /*CREEPER_SPAWN_EGG(9653);
     CREEPER_WALL_HEAD = new BlockMaterial(BlockTypes.SKULL);
     CUT_RED_SANDSTONE(26842);
@@ -212,9 +219,9 @@ public interface Material extends Keyed {
     CYAN_STAINED_GLASS(30604);
     CYAN_STAINED_GLASS_PANE(11784, GlassPane.class);
     CYAN_TERRACOTTA(25940);
-    CYAN_WALL_BANNER(10889, Directional.class);
-    CYAN_WOOL(12221);
-    DAMAGED_ANVIL(10274, Directional.class);
+    CYAN_WALL_BANNER(10889, Directional.class);*/
+    public static final Material CYAN_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.CYAN).get(), "CYAN_WOOL");
+    /*DAMAGED_ANVIL(10274, Directional.class);
     DANDELION(30558);
     DANDELION_YELLOW(21789);
     DARK_OAK_BOAT(28618, 1);
@@ -257,105 +264,105 @@ public interface Material extends Keyed {
     DEAD_TUBE_CORAL_FAN(17628, Waterlogged.class);
     DEAD_TUBE_CORAL_WALL_FAN(5128, CoralWallFan.class);
     DEBUG_STICK(24562, 1);*/
-    Material DETECTOR_RAIL = new BlockMaterial(BlockTypes.DETECTOR_RAIL, "DETECTOR_RAIL");
-    Material DIAMOND = new ItemMaterial(ItemTypes.DIAMOND, "DIAMOND");
-    Material DIAMOND_AXE = new ItemMaterial(ItemTypes.DIAMOND_AXE, "DIAMOND_AXE");
-    Material DIAMOND_BLOCK = new BlockMaterial(BlockTypes.DIAMOND_BLOCK, "DIAMOND_BLOCK");
-    Material DIAMOND_BOOTS = new ItemMaterial(ItemTypes.DIAMOND_BOOTS, "DIAMOND_BOOTS");
-    Material DIAMOND_CHESTPLATE = new ItemMaterial(ItemTypes.DIAMOND_CHESTPLATE, "DIAMOND_CHESTPLATE");
-    Material DIAMOND_HELMET = new ItemMaterial(ItemTypes.DIAMOND_HELMET, "DIAMOND_HELMET");
-    Material DIAMOND_HOE = new ItemMaterial(ItemTypes.DIAMOND_HOE, "DIAMOND_HOE");
-    Material DIAMOND_HORSE_ARMOR = new ItemMaterial(ItemTypes.DIAMOND_HORSE_ARMOR, "DIAMOND_HORSE_ARMOR");
-    Material DIAMOND_LEGGINGS = new ItemMaterial(ItemTypes.DIAMOND_LEGGINGS, "DIAMOND_LEGGINGS");
-    Material DIAMOND_ORE = new BlockMaterial(BlockTypes.DIAMOND_ORE, "DIAMOND_ORE");
-    Material DIAMOND_PICKAXE = new ItemMaterial(ItemTypes.DIAMOND_PICKAXE, "DIAMOND_PICKAXE");
-    Material DIAMOND_SHOVEL = new ItemMaterial(ItemTypes.DIAMOND_SHOVEL, "DIAMOND_SHOVEL");
-    Material DIAMOND_SWORD = new ItemMaterial(ItemTypes.DIAMOND_SWORD, "DIAMOND_SWORD");
-    //Material DIORITE = new BlockMaterial(BlockTypes.DIORITE, "DIORITE");
-    Material DIRT = new BlockMaterial(BlockTypes.DIRT, "DIRT");
-    Material DISPENSER = new BlockMaterial(BlockTypes.DISPENSER, "DISPENSER");
+    public static final Material DETECTOR_RAIL = new BlockMaterial(BlockTypes.DETECTOR_RAIL, "DETECTOR_RAIL");
+    public static final Material DIAMOND = new ItemMaterial(ItemTypes.DIAMOND, "DIAMOND");
+    public static final Material DIAMOND_AXE = new ItemMaterial(ItemTypes.DIAMOND_AXE, "DIAMOND_AXE");
+    public static final Material DIAMOND_BLOCK = new BlockMaterial(BlockTypes.DIAMOND_BLOCK, "DIAMOND_BLOCK");
+    public static final Material DIAMOND_BOOTS = new ItemMaterial(ItemTypes.DIAMOND_BOOTS, "DIAMOND_BOOTS");
+    public static final Material DIAMOND_CHESTPLATE = new ItemMaterial(ItemTypes.DIAMOND_CHESTPLATE, "DIAMOND_CHESTPLATE");
+    public static final Material DIAMOND_HELMET = new ItemMaterial(ItemTypes.DIAMOND_HELMET, "DIAMOND_HELMET");
+    public static final Material DIAMOND_HOE = new ItemMaterial(ItemTypes.DIAMOND_HOE, "DIAMOND_HOE");
+    public static final Material DIAMOND_HORSE_ARMOR = new ItemMaterial(ItemTypes.DIAMOND_HORSE_ARMOR, "DIAMOND_HORSE_ARMOR");
+    public static final Material DIAMOND_LEGGINGS = new ItemMaterial(ItemTypes.DIAMOND_LEGGINGS, "DIAMOND_LEGGINGS");
+    public static final Material DIAMOND_ORE = new BlockMaterial(BlockTypes.DIAMOND_ORE, "DIAMOND_ORE");
+    public static final Material DIAMOND_PICKAXE = new ItemMaterial(ItemTypes.DIAMOND_PICKAXE, "DIAMOND_PICKAXE");
+    public static final Material DIAMOND_SHOVEL = new ItemMaterial(ItemTypes.DIAMOND_SHOVEL, "DIAMOND_SHOVEL");
+    public static final Material DIAMOND_SWORD = new ItemMaterial(ItemTypes.DIAMOND_SWORD, "DIAMOND_SWORD");
+    //public static final Material DIORITE = new BlockMaterial(BlockTypes.DIORITE, "DIORITE");
+    public static final Material DIRT = new BlockMaterial(BlockTypes.DIRT, "DIRT");
+    public static final Material DISPENSER = new BlockMaterial(BlockTypes.DISPENSER, "DISPENSER");
     /*DOLPHIN_SPAWN_EGG(20787);
     DONKEY_SPAWN_EGG(14513);
     DRAGON_BREATH(20154);*/
-    Material DRAGON_EGG = new BlockMaterial(BlockTypes.DRAGON_EGG, "DRAGON_EGG");
-    Material DRAGON_HEAD = new BlockMaterial(BlockTypes.SKULL, "DRAGON_HEAD"); //required for Bukkit API 1.13
+    public static final Material DRAGON_EGG = new BlockMaterial(BlockTypes.DRAGON_EGG, "DRAGON_EGG");
+    public static final Material DRAGON_HEAD = new BlockMaterial(BlockTypes.SKULL, "DRAGON_HEAD"); //required for Bukkit API 1.13
     /*DRAGON_WALL_HEAD = new BlockMaterial(BlockTypes.SKULL);
     DRIED_KELP(21042);
     DRIED_KELP_BLOCK(12966);*/
-    Material DROPPER = new BlockMaterial(BlockTypes.DROPPER, "DROPPER");
+    public static final Material DROPPER = new BlockMaterial(BlockTypes.DROPPER, "DROPPER");
     //DROWNED_SPAWN_EGG(19368);
-    Material EGG = new ItemMaterial(ItemTypes.EGG, "EGG");
+    public static final Material EGG = new ItemMaterial(ItemTypes.EGG, "EGG");
     //ELDER_GUARDIAN_SPAWN_EGG(11418);
-    Material ELYTRA = new ItemMaterial(ItemTypes.ELYTRA, "ELYTRA");
-    Material EMERALD = new ItemMaterial(ItemTypes.EMERALD, "EMERALD");
-    Material EMERALD_BLOCK = new BlockMaterial(BlockTypes.EMERALD_BLOCK, "EMERALD_BLOCK");
-    Material EMERALD_ORE = new BlockMaterial(BlockTypes.EMERALD_ORE, "EMERALD_ORE");
-    Material ENCHANTED_BOOK = new ItemMaterial(ItemTypes.ENCHANTED_BOOK, "ENCHANTED_BOOK");
+    public static final Material ELYTRA = new ItemMaterial(ItemTypes.ELYTRA, "ELYTRA");
+    public static final Material EMERALD = new ItemMaterial(ItemTypes.EMERALD, "EMERALD");
+    public static final Material EMERALD_BLOCK = new BlockMaterial(BlockTypes.EMERALD_BLOCK, "EMERALD_BLOCK");
+    public static final Material EMERALD_ORE = new BlockMaterial(BlockTypes.EMERALD_ORE, "EMERALD_ORE");
+    public static final Material ENCHANTED_BOOK = new ItemMaterial(ItemTypes.ENCHANTED_BOOK, "ENCHANTED_BOOK");
     //ENCHANTED_GOLDEN_APPLE(8280);
-    Material ENCHANTING_TABLE = new BlockMaterial(BlockTypes.ENCHANTING_TABLE, "ENCHANTING_TABLE");
+    public static final Material ENCHANTING_TABLE = new BlockMaterial(BlockTypes.ENCHANTING_TABLE, "ENCHANTING_TABLE");
     /*ENDERMAN_SPAWN_EGG(29488);
     ENDERMITE_SPAWN_EGG(16617);*/
-    Material ENDER_CHEST = new BlockMaterial(BlockTypes.ENDER_CHEST, "ENDER_CHEST");
-    Material ENDER_EYE = new ItemMaterial(ItemTypes.ENDER_EYE, "ENDER_EYE");
-    Material ENDER_PEARL = new ItemMaterial(ItemTypes.ENDER_PEARL, "ENDER_PEARL");
-    Material END_CRYSTAL = new ItemMaterial(ItemTypes.END_CRYSTAL, "END_CRYSTAL");
-    Material END_GATEWAY = new BlockMaterial(BlockTypes.END_GATEWAY, "END_GATEWAY");
-    Material END_PORTAL = new BlockMaterial(BlockTypes.END_PORTAL, "END_PORTAL");
-    Material END_PORTAL_FRAME = new BlockMaterial(BlockTypes.END_PORTAL_FRAME, "END_PORTAL_FRAME");
-    Material END_ROD = new ItemMaterial(ItemTypes.END_ROD, "END_ROD");
-    Material END_STONE = new ItemMaterial(ItemTypes.END_STONE, "END_STONE");
-    Material END_STONE_BRICKS = new BlockMaterial(BlockTypes.END_STONE, "END_STONE_BRICKS");
+    public static final Material ENDER_CHEST = new BlockMaterial(BlockTypes.ENDER_CHEST, "ENDER_CHEST");
+    public static final Material ENDER_EYE = new ItemMaterial(ItemTypes.ENDER_EYE, "ENDER_EYE");
+    public static final Material ENDER_PEARL = new ItemMaterial(ItemTypes.ENDER_PEARL, "ENDER_PEARL");
+    public static final Material END_CRYSTAL = new ItemMaterial(ItemTypes.END_CRYSTAL, "END_CRYSTAL");
+    public static final Material END_GATEWAY = new BlockMaterial(BlockTypes.END_GATEWAY, "END_GATEWAY");
+    public static final Material END_PORTAL = new BlockMaterial(BlockTypes.END_PORTAL, "END_PORTAL");
+    public static final Material END_PORTAL_FRAME = new BlockMaterial(BlockTypes.END_PORTAL_FRAME, "END_PORTAL_FRAME");
+    public static final Material END_ROD = new ItemMaterial(ItemTypes.END_ROD, "END_ROD");
+    public static final Material END_STONE = new ItemMaterial(ItemTypes.END_STONE, "END_STONE");
+    public static final Material END_STONE_BRICKS = new BlockMaterial(BlockTypes.END_STONE, "END_STONE_BRICKS");
     //EVOKER_SPAWN_EGG(21271);
-    Material EXPERIENCE_BOTTLE = new ItemMaterial(ItemTypes.EXPERIENCE_BOTTLE, "EXPERIENCE_BOTTLE");
-    Material FARMLAND = new BlockMaterial(BlockTypes.FARMLAND, "FARMLAND");
-    Material FEATHER = new ItemMaterial(ItemTypes.FEATHER, "FEATHER");
+    public static final Material EXPERIENCE_BOTTLE = new ItemMaterial(ItemTypes.EXPERIENCE_BOTTLE, "EXPERIENCE_BOTTLE");
+    public static final Material FARMLAND = new BlockMaterial(BlockTypes.FARMLAND, "FARMLAND");
+    public static final Material FEATHER = new ItemMaterial(ItemTypes.FEATHER, "FEATHER");
     /*FERMENTED_SPIDER_EYE(19386);
     FERN(15794);*/
-    Material FILLED_MAP = new ItemMaterial(ItemTypes.FILLED_MAP, "FILLED_MAP");
-    Material FIRE = new BlockMaterial(BlockTypes.FIRE, "FIRE");
-    //Material FIREWORK_ROCKET = new ItemMaterial(ItemTypes.FIREWO23841);
-    //Material FIREWORK_STAR = new ItemMaterial(ItemTypes.12190);
-    Material FIRE_CHARGE = new ItemMaterial(ItemTypes.FIRE_CHARGE, "FIRE_CHARGE");
+    public static final Material FILLED_MAP = new ItemMaterial(ItemTypes.FILLED_MAP, "FILLED_MAP");
+    public static final Material FIRE = new BlockMaterial(BlockTypes.FIRE, "FIRE");
+    //public static final Material FIREWORK_ROCKET = new ItemMaterial(ItemTypes.FIREWO23841);
+    //public static final Material FIREWORK_STAR = new ItemMaterial(ItemTypes.12190);
+    public static final Material FIRE_CHARGE = new ItemMaterial(ItemTypes.FIRE_CHARGE, "FIRE_CHARGE");
     /*FIRE_CORAL(29151, Waterlogged.class);
     FIRE_CORAL_BLOCK(12119);
     FIRE_CORAL_FAN(11112, Waterlogged.class);
     FIRE_CORAL_WALL_FAN(20100, CoralWallFan.class);*/
-    Material FISHING_ROD = new ItemMaterial(ItemTypes.FISHING_ROD, "FISHING_ROD");
-    Material FLINT = new ItemMaterial(ItemTypes.FLINT, "FLINT");
-    Material FLINT_AND_STEEL = new ItemMaterial(ItemTypes.FLINT_AND_STEEL, "FLINT_AND_STEEL");
-    Material FLOWER_POT = new ItemMaterial(ItemTypes.FLOWER_POT, "FLOWER_POT");
-    Material FROSTED_ICE = new BlockMaterial(BlockTypes.FROSTED_ICE, "FROSTED_ICE");
-    Material FURNACE = new ItemMaterial(ItemTypes.FURNACE, "FURNACE");
-    Material FURNACE_MINECART = new ItemMaterial(ItemTypes.FURNACE_MINECART, "FURNACE_MINECART");
+    public static final Material FISHING_ROD = new ItemMaterial(ItemTypes.FISHING_ROD, "FISHING_ROD");
+    public static final Material FLINT = new ItemMaterial(ItemTypes.FLINT, "FLINT");
+    public static final Material FLINT_AND_STEEL = new ItemMaterial(ItemTypes.FLINT_AND_STEEL, "FLINT_AND_STEEL");
+    public static final Material FLOWER_POT = new ItemMaterial(ItemTypes.FLOWER_POT, "FLOWER_POT");
+    public static final Material FROSTED_ICE = new BlockMaterial(BlockTypes.FROSTED_ICE, "FROSTED_ICE");
+    public static final Material FURNACE = new ItemMaterial(ItemTypes.FURNACE, "FURNACE");
+    public static final Material FURNACE_MINECART = new ItemMaterial(ItemTypes.FURNACE_MINECART, "FURNACE_MINECART");
     //GHAST_SPAWN_EGG(9970);
-    Material GHAST_TEAR = new ItemMaterial(ItemTypes.GHAST_TEAR, "GHAST_TEAR");
-    Material GLASS = new BlockMaterial(BlockTypes.GLASS, "GLASS");
-    Material GLASS_BOTTLE = new ItemMaterial(ItemTypes.GLASS_BOTTLE, "GLASS_BOTTLE");
-    Material GLASS_PANE = new BlockMaterial(BlockTypes.GLASS_PANE, "GLASS_PANE");
+    public static final Material GHAST_TEAR = new ItemMaterial(ItemTypes.GHAST_TEAR, "GHAST_TEAR");
+    public static final Material GLASS = new BlockMaterial(BlockTypes.GLASS, "GLASS");
+    public static final Material GLASS_BOTTLE = new ItemMaterial(ItemTypes.GLASS_BOTTLE, "GLASS_BOTTLE");
+    public static final Material GLASS_PANE = new BlockMaterial(BlockTypes.GLASS_PANE, "GLASS_PANE");
     //GLISTERING_MELON_SLICE(20158);
-    Material GLOWSTONE = new BlockMaterial(BlockTypes.GLOWSTONE, "GLOWSTONE");
-    Material GLOWSTONE_DUST = new ItemMaterial(ItemTypes.GLOWSTONE_DUST, "GLOWSTONE_DUST");
-    Material GOLDEN_APPLE = new ItemMaterial(ItemTypes.GOLDEN_APPLE, "GOLDEN_APPLE");
-    Material GOLDEN_AXE = new ItemMaterial(ItemTypes.GOLDEN_AXE, "GOLDEN_AXE");
-    Material GOLDEN_BOOTS = new ItemMaterial(ItemTypes.GOLDEN_BOOTS, "GOLDEN_BOOTS");
+    public static final Material GLOWSTONE = new BlockMaterial(BlockTypes.GLOWSTONE, "GLOWSTONE");
+    public static final Material GLOWSTONE_DUST = new ItemMaterial(ItemTypes.GLOWSTONE_DUST, "GLOWSTONE_DUST");
+    public static final Material GOLDEN_APPLE = new ItemMaterial(ItemTypes.GOLDEN_APPLE, "GOLDEN_APPLE");
+    public static final Material GOLDEN_AXE = new ItemMaterial(ItemTypes.GOLDEN_AXE, "GOLDEN_AXE");
+    public static final Material GOLDEN_BOOTS = new ItemMaterial(ItemTypes.GOLDEN_BOOTS, "GOLDEN_BOOTS");
     //GOLDEN_CARROT(5300);
-    Material GOLDEN_CHESTPLATE = new ItemMaterial(ItemTypes.GOLDEN_CHESTPLATE, "GOLDEN_CHESTPLATE");
-    Material GOLDEN_HELMET = new ItemMaterial(ItemTypes.GOLDEN_HELMET, "GOLDEN_HELMET");
-    Material GOLDEN_HOE = new ItemMaterial(ItemTypes.GOLDEN_HOE, "GOLDEN_HOE");
+    public static final Material GOLDEN_CHESTPLATE = new ItemMaterial(ItemTypes.GOLDEN_CHESTPLATE, "GOLDEN_CHESTPLATE");
+    public static final Material GOLDEN_HELMET = new ItemMaterial(ItemTypes.GOLDEN_HELMET, "GOLDEN_HELMET");
+    public static final Material GOLDEN_HOE = new ItemMaterial(ItemTypes.GOLDEN_HOE, "GOLDEN_HOE");
     /*GOLDEN_HORSE_ARMOR(7996, 1);*/
-    Material GOLDEN_LEGGINGS = new ItemMaterial(ItemTypes.GOLDEN_LEGGINGS, "GOLDEN_LEGGINGS");
-    Material GOLDEN_PICKAXE = new ItemMaterial(ItemTypes.GOLDEN_PICKAXE, "GOLDEN_PICKAXE");
-    Material GOLDEN_SHOVEL = new ItemMaterial(ItemTypes.GOLDEN_SHOVEL, "GOLDEN_SHOVEL");
-    Material GOLDEN_SWORD = new ItemMaterial(ItemTypes.GOLDEN_SWORD, "GOLDEN_SWORD");
-    Material GOLD_BLOCK = new BlockMaterial(BlockTypes.GOLD_BLOCK, "GOLD_BLOCK");
-    Material GOLD_INGOT = new ItemMaterial(ItemTypes.GOLD_INGOT, "GOLD_INGOT");
-    Material GOLD_NUGGET = new ItemMaterial(ItemTypes.GOLD_NUGGET, "GOLD_NUGGET");
-    Material GOLD_ORE = new BlockMaterial(BlockTypes.GOLD_ORE, "GOLD_ORE");
-    //Material GRANITE = new BlockMaterial(BlockTypes.GRANITE, "GRANITE");
-    //Material GRASS = new ItemMaterial(BlockTypes.GRASS, "GRASS");
-    Material GRASS_BLOCK = new BlockMaterial(BlockTypes.GRASS, "GRASS_BLOCK");
-    Material GRASS_PATH = new BlockMaterial(BlockTypes.GRASS_PATH, "GRASS_PATH");
-    Material GRAVEL = new BlockMaterial(BlockTypes.GRAVEL, "GRAVEL");
+    public static final Material GOLDEN_LEGGINGS = new ItemMaterial(ItemTypes.GOLDEN_LEGGINGS, "GOLDEN_LEGGINGS");
+    public static final Material GOLDEN_PICKAXE = new ItemMaterial(ItemTypes.GOLDEN_PICKAXE, "GOLDEN_PICKAXE");
+    public static final Material GOLDEN_SHOVEL = new ItemMaterial(ItemTypes.GOLDEN_SHOVEL, "GOLDEN_SHOVEL");
+    public static final Material GOLDEN_SWORD = new ItemMaterial(ItemTypes.GOLDEN_SWORD, "GOLDEN_SWORD");
+    public static final Material GOLD_BLOCK = new BlockMaterial(BlockTypes.GOLD_BLOCK, "GOLD_BLOCK");
+    public static final Material GOLD_INGOT = new ItemMaterial(ItemTypes.GOLD_INGOT, "GOLD_INGOT");
+    public static final Material GOLD_NUGGET = new ItemMaterial(ItemTypes.GOLD_NUGGET, "GOLD_NUGGET");
+    public static final Material GOLD_ORE = new BlockMaterial(BlockTypes.GOLD_ORE, "GOLD_ORE");
+    //public static final Material GRANITE = new BlockMaterial(BlockTypes.GRANITE, "GRANITE");
+    public static final Material GRASS = new BlockMaterial(BlockTypes.TALLGRASS, "GRASS");
+    public static final Material GRASS_BLOCK = new BlockMaterial(BlockTypes.GRASS, "GRASS_BLOCK");
+    public static final Material GRASS_PATH = new BlockMaterial(BlockTypes.GRASS_PATH, "GRASS_PATH");
+    public static final Material GRAVEL = new BlockMaterial(BlockTypes.GRAVEL, "GRAVEL");
     /*GRAY_BANNER(12053, 16, Rotatable.class);
     GRAY_BED(15745, 1, Bed.class);
     GRAY_CARPET(26991);
@@ -367,9 +374,9 @@ public interface Material extends Keyed {
     GRAY_STAINED_GLASS(29979);
     GRAY_STAINED_GLASS_PANE(25272, GlassPane.class);
     GRAY_TERRACOTTA(18004);
-    GRAY_WALL_BANNER(24275, Directional.class);
-    GRAY_WOOL(27209);
-    GREEN_BANNER(10698, 16, Rotatable.class);
+    GRAY_WALL_BANNER(24275, Directional.class);*/
+    public static final Material GRAY_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.GRAY).get(), "GRAY_WOOL");
+    /*GREEN_BANNER(10698, 16, Rotatable.class);
     GREEN_BED(13797, 1, Bed.class);
     GREEN_CARPET(7780);
     GREEN_CONCRETE(17949);
@@ -379,49 +386,49 @@ public interface Material extends Keyed {
     GREEN_STAINED_GLASS(22503);
     GREEN_STAINED_GLASS_PANE(4767, GlassPane.class);
     GREEN_TERRACOTTA(4105);
-    GREEN_WALL_BANNER(15046, Directional.class);
-    GREEN_WOOL(25085);
-    GUARDIAN_SPAWN_EGG(20113);*/
-    Material GUNPOWDER = new ItemMaterial(ItemTypes.GUNPOWDER, "GUNPOWDER");
-    Material HAY_BLOCK = new BlockMaterial(BlockTypes.HAY_BLOCK, "HAY_BLOCK");
+    GREEN_WALL_BANNER(15046, Directional.class);*/
+    public static final Material GREEN_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.GREEN).get(), "GREEN_WOOL");
+    //GUARDIAN_SPAWN_EGG(20113);
+    public static final Material GUNPOWDER = new ItemMaterial(ItemTypes.GUNPOWDER, "GUNPOWDER");
+    public static final Material HAY_BLOCK = new BlockMaterial(BlockTypes.HAY_BLOCK, "HAY_BLOCK");
     //HEART_OF_THE_SEA(11807);
-    Material HEAVY_WEIGHTED_PRESSURE_PLATE = new BlockMaterial(BlockTypes.HEAVY_WEIGHTED_PRESSURE_PLATE, "HEAVY_WEIGHTED_PRESSURE_PLATE");
-    Material HOPPER = new BlockMaterial(BlockTypes.HOPPER, "HOPPER");
-    Material HOPPER_MINECART = new ItemMaterial(ItemTypes.HOPPER_MINECART, "HOPPER_MINECART");
+    public static final Material HEAVY_WEIGHTED_PRESSURE_PLATE = new BlockMaterial(BlockTypes.HEAVY_WEIGHTED_PRESSURE_PLATE, "HEAVY_WEIGHTED_PRESSURE_PLATE");
+    public static final Material HOPPER = new BlockMaterial(BlockTypes.HOPPER, "HOPPER");
+    public static final Material HOPPER_MINECART = new ItemMaterial(ItemTypes.HOPPER_MINECART, "HOPPER_MINECART");
     /*HORN_CORAL(19511, Waterlogged.class);
     HORN_CORAL_BLOCK(19958);
     HORN_CORAL_FAN(13610, Waterlogged.class);
     HORN_CORAL_WALL_FAN(28883, CoralWallFan.class);
     HORSE_SPAWN_EGG(25981);
     HUSK_SPAWN_EGG(20178);*/
-    Material ICE = new BlockMaterial(BlockTypes.ICE, "ICE");
+    public static final Material ICE = new BlockMaterial(BlockTypes.ICE, "ICE");
     /*INFESTED_CHISELED_STONE_BRICKS(4728);
     INFESTED_COBBLESTONE(28798);
     INFESTED_CRACKED_STONE_BRICKS(7476);
     INFESTED_MOSSY_STONE_BRICKS(9850);
     INFESTED_STONE(18440);
     INFESTED_STONE_BRICKS(19749);*/
-    //Material INK_SAC = new ItemMaterial();
-    Material IRON_AXE = new ItemMaterial(ItemTypes.IRON_AXE, "IRON_AXE");
-    Material IRON_BARS = new ItemMaterial(ItemTypes.IRON_BARS, "IRON_BARS");
-    Material IRON_BLOCK = new BlockMaterial(BlockTypes.IRON_BLOCK, "IRON_BLOCK");
-    Material IRON_BOOTS = new ItemMaterial(ItemTypes.IRON_BOOTS, "IRON_BOOTS");
-    Material IRON_CHESTPLATE = new ItemMaterial(ItemTypes.IRON_CHESTPLATE, "IRON_CHESTPLATE");
-    Material IRON_DOOR = new BlockMaterial(BlockTypes.IRON_DOOR, "IRON_DOOR");
-    Material IRON_HELMET = new ItemMaterial(ItemTypes.IRON_HELMET, "IRON_HELMET");
-    Material IRON_HOE = new ItemMaterial(ItemTypes.IRON_HOE, "IRON_HOE");
-    Material IRON_HORSE_ARMOR = new ItemMaterial(ItemTypes.IRON_HORSE_ARMOR, "IRON_HORSE_ARMOR");
-    Material IRON_INGOT = new ItemMaterial(ItemTypes.IRON_INGOT, "IRON_INGOT");
-    Material IRON_LEGGINGS = new ItemMaterial(ItemTypes.IRON_LEGGINGS, "IRON_LEGGINGS");
-    Material IRON_NUGGET = new ItemMaterial(ItemTypes.IRON_NUGGET, "IRON_NUGGETS");
-    Material IRON_ORE = new BlockMaterial(BlockTypes.IRON_ORE, "IRON_ORE");
-    Material IRON_PICKAXE = new ItemMaterial(ItemTypes.IRON_PICKAXE, "IRON_PICKAXE");
-    Material IRON_SHOVEL = new ItemMaterial(ItemTypes.IRON_SHOVEL, "IRON_SHOVEL");
-    Material IRON_SWORD = new ItemMaterial(ItemTypes.IRON_SWORD, "IRON_SWORD");
-    Material IRON_TRAPDOOR = new BlockMaterial(BlockTypes.IRON_TRAPDOOR, "IRON_TRAPDOOR");
-    Material ITEM_FRAME = new ItemMaterial(ItemTypes.ITEM_FRAME, "IRON_FRAME");
-    Material JACK_O_LANTERN = new ItemMaterial(ItemTypes.LIT_PUMPKIN, "JACK_O_LANTERN");
-    Material JUKEBOX = new BlockMaterial(BlockTypes.JUKEBOX, "JUKEBOX");
+    //public static final Material INK_SAC = new ItemMaterial();
+    public static final Material IRON_AXE = new ItemMaterial(ItemTypes.IRON_AXE, "IRON_AXE");
+    public static final Material IRON_BARS = new ItemMaterial(ItemTypes.IRON_BARS, "IRON_BARS");
+    public static final Material IRON_BLOCK = new BlockMaterial(BlockTypes.IRON_BLOCK, "IRON_BLOCK");
+    public static final Material IRON_BOOTS = new ItemMaterial(ItemTypes.IRON_BOOTS, "IRON_BOOTS");
+    public static final Material IRON_CHESTPLATE = new ItemMaterial(ItemTypes.IRON_CHESTPLATE, "IRON_CHESTPLATE");
+    public static final Material IRON_DOOR = new BlockMaterial(BlockTypes.IRON_DOOR, "IRON_DOOR");
+    public static final Material IRON_HELMET = new ItemMaterial(ItemTypes.IRON_HELMET, "IRON_HELMET");
+    public static final Material IRON_HOE = new ItemMaterial(ItemTypes.IRON_HOE, "IRON_HOE");
+    public static final Material IRON_HORSE_ARMOR = new ItemMaterial(ItemTypes.IRON_HORSE_ARMOR, "IRON_HORSE_ARMOR");
+    public static final Material IRON_INGOT = new ItemMaterial(ItemTypes.IRON_INGOT, "IRON_INGOT");
+    public static final Material IRON_LEGGINGS = new ItemMaterial(ItemTypes.IRON_LEGGINGS, "IRON_LEGGINGS");
+    public static final Material IRON_NUGGET = new ItemMaterial(ItemTypes.IRON_NUGGET, "IRON_NUGGETS");
+    public static final Material IRON_ORE = new BlockMaterial(BlockTypes.IRON_ORE, "IRON_ORE");
+    public static final Material IRON_PICKAXE = new ItemMaterial(ItemTypes.IRON_PICKAXE, "IRON_PICKAXE");
+    public static final Material IRON_SHOVEL = new ItemMaterial(ItemTypes.IRON_SHOVEL, "IRON_SHOVEL");
+    public static final Material IRON_SWORD = new ItemMaterial(ItemTypes.IRON_SWORD, "IRON_SWORD");
+    public static final Material IRON_TRAPDOOR = new BlockMaterial(BlockTypes.IRON_TRAPDOOR, "IRON_TRAPDOOR");
+    public static final Material ITEM_FRAME = new ItemMaterial(ItemTypes.ITEM_FRAME, "IRON_FRAME");
+    public static final Material JACK_O_LANTERN = new ItemMaterial(ItemTypes.LIT_PUMPKIN, "JACK_O_LANTERN");
+    public static final Material JUKEBOX = new BlockMaterial(BlockTypes.JUKEBOX, "JUKEBOX");
     /*JUNGLE_BOAT(4495, 1);
     JUNGLE_BUTTON(25317, Switch.class);
     JUNGLE_DOOR(28163, Door.class);
@@ -439,20 +446,20 @@ public interface Material extends Keyed {
     KELP(21916, Ageable.class);
     KELP_PLANT(29697);
     KNOWLEDGE_BOOK(12646, 1);*/
-    Material LADDER = new BlockMaterial(BlockTypes.LADDER, "LADDER");
-    Material LAPIS_BLOCK = new BlockMaterial(BlockTypes.LAPIS_BLOCK, "LAPIS_BLOCK");
-    //Material LAPIS_LAZULI = new ItemMaterial(ItemTypes.LAZULI);
-    Material LAPIS_ORE = new BlockMaterial(BlockTypes.LAPIS_ORE, "LAPIS_ORE");
-    //Material LARGE_FERN = new ItemMaterial(BlockTypes, "LARGE_FERN");
-    Material LAVA = new BlockMaterial(BlockTypes.LAVA, "LAVA");
-    Material LAVA_BUCKET = new ItemMaterial(ItemTypes.LAVA_BUCKET, "LAVA_BUCKET");
-    Material LEAD = new ItemMaterial(ItemTypes.LEAD, "LEAD");
-    Material LEATHER = new ItemMaterial(ItemTypes.LEATHER, "LEATHER");
-    Material LEATHER_BOOTS = new ItemMaterial(ItemTypes.LEATHER_BOOTS, "LEATHER_BOOTS");
-    Material LEATHER_CHESTPLATE = new ItemMaterial(ItemTypes.LEATHER_CHESTPLATE, "LEATHER_CHESTPLATE");
-    Material LEATHER_HELMET = new ItemMaterial(ItemTypes.LEATHER_HELMET, "LEATHER_HELMET");
-    Material LEATHER_LEGGINGS = new ItemMaterial(ItemTypes.LEATHER_LEGGINGS, "LEATHER_LEGGINGS");
-    Material LEVER = new BlockMaterial(BlockTypes.LEVER, "LEVER");
+    public static final Material LADDER = new BlockMaterial(BlockTypes.LADDER, "LADDER");
+    public static final Material LAPIS_BLOCK = new BlockMaterial(BlockTypes.LAPIS_BLOCK, "LAPIS_BLOCK");
+    //public static final Material LAPIS_LAZULI = new ItemMaterial(ItemTypes.LAZULI);
+    public static final Material LAPIS_ORE = new BlockMaterial(BlockTypes.LAPIS_ORE, "LAPIS_ORE");
+    //public static final Material LARGE_FERN = new ItemMaterial(BlockTypes, "LARGE_FERN");
+    public static final Material LAVA = new BlockMaterial(BlockTypes.LAVA, "LAVA");
+    public static final Material LAVA_BUCKET = new ItemMaterial(ItemTypes.LAVA_BUCKET, "LAVA_BUCKET");
+    public static final Material LEAD = new ItemMaterial(ItemTypes.LEAD, "LEAD");
+    public static final Material LEATHER = new ItemMaterial(ItemTypes.LEATHER, "LEATHER");
+    public static final Material LEATHER_BOOTS = new ItemMaterial(ItemTypes.LEATHER_BOOTS, "LEATHER_BOOTS");
+    public static final Material LEATHER_CHESTPLATE = new ItemMaterial(ItemTypes.LEATHER_CHESTPLATE, "LEATHER_CHESTPLATE");
+    public static final Material LEATHER_HELMET = new ItemMaterial(ItemTypes.LEATHER_HELMET, "LEATHER_HELMET");
+    public static final Material LEATHER_LEGGINGS = new ItemMaterial(ItemTypes.LEATHER_LEGGINGS, "LEATHER_LEGGINGS");
+    public static final Material LEVER = new BlockMaterial(BlockTypes.LEVER, "LEVER");
     /*LIGHT_BLUE_BANNER(18060, 16, Rotatable.class);
     LIGHT_BLUE_BED(20957, 1, Bed.class);
     LIGHT_BLUE_CARPET(21194);
@@ -464,9 +471,9 @@ public interface Material extends Keyed {
     LIGHT_BLUE_STAINED_GLASS(17162);
     LIGHT_BLUE_STAINED_GLASS_PANE(18721, GlassPane.class);
     LIGHT_BLUE_TERRACOTTA(31779);
-    LIGHT_BLUE_WALL_BANNER(12011, Directional.class);
-    LIGHT_BLUE_WOOL(21073);
-    LIGHT_GRAY_BANNER(11417, 16, Rotatable.class);
+    LIGHT_BLUE_WALL_BANNER(12011, Directional.class);*/
+    public static final Material LIGHT_BLUE_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.LIGHT_BLUE).get(), "LIGHT_BLUE_WOOL");
+    /*LIGHT_GRAY_BANNER(11417, 16, Rotatable.class);
     LIGHT_GRAY_BED(5090, 1, Bed.class);
     LIGHT_GRAY_CARPET(11317);
     LIGHT_GRAY_CONCRETE(14453);
@@ -477,11 +484,11 @@ public interface Material extends Keyed {
     LIGHT_GRAY_STAINED_GLASS(5843);
     LIGHT_GRAY_STAINED_GLASS_PANE(19008, GlassPane.class);
     LIGHT_GRAY_TERRACOTTA(26388);
-    LIGHT_GRAY_WALL_BANNER(31088, Directional.class);
-    LIGHT_GRAY_WOOL(22936);*/
-    Material LIGHT_WEIGHTED_PRESSURE_PLATE = new BlockMaterial(BlockTypes.LIGHT_WEIGHTED_PRESSURE_PLATE, "LIGHT_WEIGHTED_PRESSURE_PLATE");
-    //Material LILAC = new ItemMaterial(ItemTypes.LILAC, "LILAC");
-    Material LILY_PAD = new BlockMaterial(BlockTypes.WATERLILY, "LILY_PAD");
+    LIGHT_GRAY_WALL_BANNER(31088, Directional.class);*/
+    public static final Material LIGHT_GRAY_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.SILVER).get(), "LIGHT_GRAY_WOOL");
+    public static final Material LIGHT_WEIGHTED_PRESSURE_PLATE = new BlockMaterial(BlockTypes.LIGHT_WEIGHTED_PRESSURE_PLATE, "LIGHT_WEIGHTED_PRESSURE_PLATE");
+    //public static final Material LILAC = new ItemMaterial(ItemTypes.LILAC, "LILAC");
+    public static final Material LILY_PAD = new BlockMaterial(BlockTypes.WATERLILY, "LILY_PAD");
     /*LIME_BANNER(18887, 16, Rotatable.class);
     LIME_BED(27860, 1, Bed.class);
     LIME_CARPET(15443);
@@ -493,9 +500,9 @@ public interface Material extends Keyed {
     LIME_STAINED_GLASS(24266);
     LIME_STAINED_GLASS_PANE(10610, GlassPane.class);
     LIME_TERRACOTTA(24013);
-    LIME_WALL_BANNER(21422, Directional.class);
-    LIME_WOOL(10443);
-    LINGERING_POTION(25857, 1);
+    LIME_WALL_BANNER(21422, Directional.class);*/
+    public static final Material LIME_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.LIME).get(), "LIME_WOOL");
+    /*LINGERING_POTION(25857, 1);
     LLAMA_SPAWN_EGG(23640);
     MAGENTA_BANNER(15591, 16, Rotatable.class);
     MAGENTA_BED(20061, 1, Bed.class);
@@ -508,54 +515,54 @@ public interface Material extends Keyed {
     MAGENTA_STAINED_GLASS(26814);
     MAGENTA_STAINED_GLASS_PANE(14082, GlassPane.class);
     MAGENTA_TERRACOTTA(25900);
-    MAGENTA_WALL_BANNER(23291, Directional.class);
-    MAGENTA_WOOL(11853);*/
-    Material MAGMA_BLOCK = new BlockMaterial(BlockTypes.MAGMA, "MAGMA_BLOCK");
-    Material MAGMA_CREAM = new ItemMaterial(ItemTypes.MAGMA_CREAM, "MAGMA_CREAM");
+    MAGENTA_WALL_BANNER(23291, Directional.class);*/
+    public static final Material MAGENTA_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.MAGENTA).get(), "MAGENTA_WOOL");
+    public static final Material MAGMA_BLOCK = new BlockMaterial(BlockTypes.MAGMA, "MAGMA_BLOCK");
+    public static final Material MAGMA_CREAM = new ItemMaterial(ItemTypes.MAGMA_CREAM, "MAGMA_CREAM");
     //MAGMA_CUBE_SPAWN_EGG(26638);
-    Material MAP = new ItemMaterial(ItemTypes.MAP, "MAP");
-    Material MELON = new BlockMaterial(BlockTypes.MELON_BLOCK, "MELON");
-    Material MELON_SEEDS = new ItemMaterial(ItemTypes.MELON_SEEDS, "MELON_SEEDS");
-    Material MELON_SLICE = new ItemMaterial(ItemTypes.MELON, "MELON_SLICE");
-    //Material MELON_STEM = new BlockMaterial(BlockTypes.8247, Ageable.class);
-    Material MILK_BUCKET = new ItemMaterial(ItemTypes.MILK_BUCKET, "MILK_BUCKET");
-    Material MINECART = new ItemMaterial(ItemTypes.MINECART, "MINECART");
+    public static final Material MAP = new ItemMaterial(ItemTypes.MAP, "MAP");
+    public static final Material MELON = new BlockMaterial(BlockTypes.MELON_BLOCK, "MELON");
+    public static final Material MELON_SEEDS = new ItemMaterial(ItemTypes.MELON_SEEDS, "MELON_SEEDS");
+    public static final Material MELON_SLICE = new ItemMaterial(ItemTypes.MELON, "MELON_SLICE");
+    //public static final Material MELON_STEM = new BlockMaterial(BlockTypes.8247, Ageable.class);
+    public static final Material MILK_BUCKET = new ItemMaterial(ItemTypes.MILK_BUCKET, "MILK_BUCKET");
+    public static final Material MINECART = new ItemMaterial(ItemTypes.MINECART, "MINECART");
     //MOOSHROOM_SPAWN_EGG(22125);
-    Material MOSSY_COBBLESTONE = new BlockMaterial(BlockTypes.MOSSY_COBBLESTONE, "MOSSY_COBBLESTONE");
-    //Material MOSSY_COBBLESTONE_WALL = new BlockMaterial(BlockTypes.COBBLE11536, Fence.class);
+    public static final Material MOSSY_COBBLESTONE = new BlockMaterial(BlockTypes.MOSSY_COBBLESTONE, "MOSSY_COBBLESTONE");
+    //public static final Material MOSSY_COBBLESTONE_WALL = new BlockMaterial(BlockTypes.COBBLE11536, Fence.class);
     //MOSSY_STONE_BRICKS(16415);
-    Material MOVING_PISTON = new BlockMaterial(BlockTypes.PISTON_EXTENSION, "MOVING_PISTON");
+    public static final Material MOVING_PISTON = new BlockMaterial(BlockTypes.PISTON_EXTENSION, "MOVING_PISTON");
     /*MULE_SPAWN_EGG(11229);
     MUSHROOM_STEM(16543, MultipleFacing.class);*/
-    Material MUSHROOM_STEW = new ItemMaterial(ItemTypes.MUSHROOM_STEW, "MUSHROOM_STEW");
-    Material MUSIC_DISC_11 = new ItemMaterial(ItemTypes.RECORD_11, "MUSIC_DISC_11");
-    Material MUSIC_DISC_13 = new ItemMaterial(ItemTypes.RECORD_13, "MUSIC_DISK_13");
-    Material MUSIC_DISC_BLOCKS = new ItemMaterial(ItemTypes.RECORD_BLOCKS, "MUSIC_DISK_BLOCKS");
-    Material MUSIC_DISC_CAT = new ItemMaterial(ItemTypes.RECORD_CAT, "MUSIC_DISK_CAT");
-    Material MUSIC_DISC_CHIRP = new ItemMaterial(ItemTypes.RECORD_CHIRP, "MUSIC_DISC_CHIRP");
-    Material MUSIC_DISC_FAR = new ItemMaterial(ItemTypes.RECORD_FAR, "MUSIC_DISC_FAR");
-    Material MUSIC_DISC_MALL = new ItemMaterial(ItemTypes.RECORD_MALL, "MUSIC_DISC_MALL");
-    Material MUSIC_DISC_MELLOHI = new ItemMaterial(ItemTypes.RECORD_MELLOHI, "MUSIC_DISC_MELLOHI");
-    Material MUSIC_DISC_STAL = new ItemMaterial(ItemTypes.RECORD_STAL, "MUSIC_DISC_STAL");
-    Material MUSIC_DISC_STRAD = new ItemMaterial(ItemTypes.RECORD_STRAD, "MUSIC_DISC_STRAD");
-    Material MUSIC_DISC_WAIT = new ItemMaterial(ItemTypes.RECORD_WAIT, "MUSIC_DISC_WAIT");
-    Material MUSIC_DISC_WARD = new ItemMaterial(ItemTypes.RECORD_WARD, "MUSIC_DISC_WARD");
-    Material MUTTON = new ItemMaterial(ItemTypes.MUTTON, "MUTTON");
-    Material MYCELIUM = new BlockMaterial(BlockTypes.MYCELIUM, "MYCELIM");
-    Material NAME_TAG = new ItemMaterial(ItemTypes.NAME_TAG, "NAME_TAG");
+    public static final Material MUSHROOM_STEW = new ItemMaterial(ItemTypes.MUSHROOM_STEW, "MUSHROOM_STEW");
+    public static final Material MUSIC_DISC_11 = new ItemMaterial(ItemTypes.RECORD_11, "MUSIC_DISC_11");
+    public static final Material MUSIC_DISC_13 = new ItemMaterial(ItemTypes.RECORD_13, "MUSIC_DISK_13");
+    public static final Material MUSIC_DISC_BLOCKS = new ItemMaterial(ItemTypes.RECORD_BLOCKS, "MUSIC_DISK_BLOCKS");
+    public static final Material MUSIC_DISC_CAT = new ItemMaterial(ItemTypes.RECORD_CAT, "MUSIC_DISK_CAT");
+    public static final Material MUSIC_DISC_CHIRP = new ItemMaterial(ItemTypes.RECORD_CHIRP, "MUSIC_DISC_CHIRP");
+    public static final Material MUSIC_DISC_FAR = new ItemMaterial(ItemTypes.RECORD_FAR, "MUSIC_DISC_FAR");
+    public static final Material MUSIC_DISC_MALL = new ItemMaterial(ItemTypes.RECORD_MALL, "MUSIC_DISC_MALL");
+    public static final Material MUSIC_DISC_MELLOHI = new ItemMaterial(ItemTypes.RECORD_MELLOHI, "MUSIC_DISC_MELLOHI");
+    public static final Material MUSIC_DISC_STAL = new ItemMaterial(ItemTypes.RECORD_STAL, "MUSIC_DISC_STAL");
+    public static final Material MUSIC_DISC_STRAD = new ItemMaterial(ItemTypes.RECORD_STRAD, "MUSIC_DISC_STRAD");
+    public static final Material MUSIC_DISC_WAIT = new ItemMaterial(ItemTypes.RECORD_WAIT, "MUSIC_DISC_WAIT");
+    public static final Material MUSIC_DISC_WARD = new ItemMaterial(ItemTypes.RECORD_WARD, "MUSIC_DISC_WARD");
+    public static final Material MUTTON = new ItemMaterial(ItemTypes.MUTTON, "MUTTON");
+    public static final Material MYCELIUM = new BlockMaterial(BlockTypes.MYCELIUM, "MYCELIM");
+    public static final Material NAME_TAG = new ItemMaterial(ItemTypes.NAME_TAG, "NAME_TAG");
     //NAUTILUS_SHELL(19989);
-    Material NETHERRACK = new BlockMaterial(BlockTypes.NETHERRACK, "NETHERRACK");
-    Material NETHER_BRICK = new BlockMaterial(BlockTypes.NETHER_BRICK, "NETHER_BRICK");
-    Material NETHER_BRICKS = new ItemMaterial(ItemTypes.NETHERBRICK, "NETHER_BRICKS");
-    Material NETHER_BRICK_FENCE = new BlockMaterial(BlockTypes.NETHER_BRICK_FENCE, "NETHER_BRICK_FENCE");
-    //Material NETHER_BRICK_SLAB = new BlockMaterial(26586, Slab.class);
+    public static final Material NETHERRACK = new BlockMaterial(BlockTypes.NETHERRACK, "NETHERRACK");
+    public static final Material NETHER_BRICK = new BlockMaterial(BlockTypes.NETHER_BRICK, "NETHER_BRICK");
+    public static final Material NETHER_BRICKS = new ItemMaterial(ItemTypes.NETHERBRICK, "NETHER_BRICKS");
+    public static final Material NETHER_BRICK_FENCE = new BlockMaterial(BlockTypes.NETHER_BRICK_FENCE, "NETHER_BRICK_FENCE");
+    //public static final Material NETHER_BRICK_SLAB = new BlockMaterial(26586, Slab.class);
     //NETHER_BRICK_STAIRS(12085, Stairs.class);
-    Material NETHER_PORTAL = new BlockMaterial(BlockTypes.PORTAL, "NETHER_PORTAL");
-    Material NETHER_QUARTZ_ORE = new BlockMaterial(BlockTypes.QUARTZ_ORE, "NETHER_QUARTZ_ORE");
-    Material NETHER_STAR = new ItemMaterial(ItemTypes.NETHER_STAR, "NETHER_STAR");
-    Material NETHER_WART = new BlockMaterial(BlockTypes.NETHER_WART, "NETHER_WART");
-    Material NETHER_WART_BLOCK = new BlockMaterial(BlockTypes.NETHER_WART_BLOCK, "NETHER_WART_BLOCK");
-    Material NOTE_BLOCK = new BlockMaterial(BlockTypes.NOTEBLOCK, "NOTE_BLOCK");
+    public static final Material NETHER_PORTAL = new BlockMaterial(BlockTypes.PORTAL, "NETHER_PORTAL");
+    public static final Material NETHER_QUARTZ_ORE = new BlockMaterial(BlockTypes.QUARTZ_ORE, "NETHER_QUARTZ_ORE");
+    public static final Material NETHER_STAR = new ItemMaterial(ItemTypes.NETHER_STAR, "NETHER_STAR");
+    public static final Material NETHER_WART = new BlockMaterial(BlockTypes.NETHER_WART, "NETHER_WART");
+    public static final Material NETHER_WART_BLOCK = new BlockMaterial(BlockTypes.NETHER_WART_BLOCK, "NETHER_WART_BLOCK");
+    public static final Material NOTE_BLOCK = new BlockMaterial(BlockTypes.NOTEBLOCK, "NOTE_BLOCK");
     /*OAK_BOAT(17570, 1);
     OAK_BUTTON(13510, Switch.class);
     OAK_DOOR(20341, Door.class);
@@ -570,8 +577,8 @@ public interface Material extends Keyed {
     OAK_STAIRS(5449, Stairs.class);
     OAK_TRAPDOOR(16927, TrapDoor.class);
     OAK_WOOD(7378, Orientable.class);*/
-    Material OBSERVER = new BlockMaterial(BlockTypes.OBSERVER, "OBSERVER");
-    Material OBSIDIAN = new BlockMaterial(BlockTypes.OBSIDIAN, "OBSIDIAN");
+    public static final Material OBSERVER = new BlockMaterial(BlockTypes.OBSERVER, "OBSERVER");
+    public static final Material OBSIDIAN = new BlockMaterial(BlockTypes.OBSIDIAN, "OBSIDIAN");
     /*OCELOT_SPAWN_EGG(30080);
     ORANGE_BANNER(4839, 16, Rotatable.class);
     ORANGE_BED(11194, 1, Bed.class);
@@ -585,12 +592,12 @@ public interface Material extends Keyed {
     ORANGE_STAINED_GLASS_PANE(21089, GlassPane.class);
     ORANGE_TERRACOTTA(18684);
     ORANGE_TULIP(26038);
-    ORANGE_WALL_BANNER(9936, Directional.class);
-    ORANGE_WOOL(23957);*/
-    //Material OXEYE_DAISY = new BlockMaterial(BlockTypes.DAISY);
-    Material PACKED_ICE = new BlockMaterial(BlockTypes.PACKED_ICE, "PACKED_ICE");
-    Material PAINTING = new ItemMaterial(ItemTypes.PAINTING, "PAINTING");
-    Material PAPER = new ItemMaterial(ItemTypes.PAPER, "PAPER");
+    ORANGE_WALL_BANNER(9936, Directional.class);*/
+    public static final Material ORANGE_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.ORANGE).get(), "ORANGE_WOOL");
+    //public static final Material OXEYE_DAISY = new BlockMaterial(BlockTypes.DAISY);
+    public static final Material PACKED_ICE = new BlockMaterial(BlockTypes.PACKED_ICE, "PACKED_ICE");
+    public static final Material PAINTING = new ItemMaterial(ItemTypes.PAINTING, "PAINTING");
+    public static final Material PAPER = new ItemMaterial(ItemTypes.PAPER, "PAPER");
     /*PARROT_SPAWN_EGG(23614);
     PEONY(21155, Bisected.class);
     PETRIFIED_OAK_SLAB(18658, Slab.class);
@@ -609,13 +616,13 @@ public interface Material extends Keyed {
     PINK_STAINED_GLASS_PANE(24637, GlassPane.class);
     PINK_TERRACOTTA(23727);
     PINK_TULIP(27319);
-    PINK_WALL_BANNER(9421, Directional.class);
-    PINK_WOOL(7611);*/
-    Material PISTON = new BlockMaterial(BlockTypes.PISTON, "PISTON");
-    Material PISTON_HEAD = new BlockMaterial(BlockTypes.PISTON_HEAD, "PISTON_HEAD");
-    Material PLAYER_HEAD = new BlockMaterial(BlockTypes.SKULL, "PLAYER_HEAD");
-    /*PLAYER_WALL_HEAD = new BlockMaterial(BlockTypes.SKULL);
-    PODZOL(24068, Snowable.class);
+    PINK_WALL_BANNER(9421, Directional.class);*/
+    public static final Material PINK_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.PINK).get(), "PINK_WOOL");
+    public static final Material PISTON = new BlockMaterial(BlockTypes.PISTON, "PISTON");
+    public static final Material PISTON_HEAD = new BlockMaterial(BlockTypes.PISTON_HEAD, "PISTON_HEAD");
+    public static final Material PLAYER_HEAD = new ExtendedItemMaterial(ItemTypes.SKULL.getTemplate().with(Keys.SKULL_TYPE, SkullTypes.PLAYER).get(), "PLAYER_HEAD");
+    public static final Material PLAYER_WALL_HEAD = new ExtendedBlockMaterial(BlockTypes.SKULL.getDefaultState(), "PLAYER_WALL_HEAD");
+    /*PODZOL(24068, Snowable.class);
     POISONOUS_POTATO(32640);
     POLAR_BEAR_SPAWN_EGG(17015);
     POLISHED_ANDESITE(8335);
@@ -623,10 +630,10 @@ public interface Material extends Keyed {
     POLISHED_GRANITE(5477);
     POPPED_CHORUS_FRUIT(27844);
     POPPY(12851);*/
-    Material PORKCHOP = new ItemMaterial(ItemTypes.PORKCHOP, "PORKCHOP");
-    Material POTATO = new ItemMaterial(ItemTypes.POTATO, "POTATO");
-    Material POTATOES = new BlockMaterial(BlockTypes.POTATOES, "POTATOES");
-    Material POTION = new ItemMaterial(ItemTypes.POTION, "POTION");
+    public static final Material PORKCHOP = new ItemMaterial(ItemTypes.PORKCHOP, "PORKCHOP");
+    public static final Material POTATO = new ItemMaterial(ItemTypes.POTATO, "POTATO");
+    public static final Material POTATOES = new BlockMaterial(BlockTypes.POTATOES, "POTATOES");
+    public static final Material POTION = new ItemMaterial(ItemTypes.POTION, "POTION");
     /*POTTED_ACACIA_SAPLING(14096);
     POTTED_ALLIUM(13184);
     POTTED_AZURE_BLUET(8754);
@@ -648,7 +655,7 @@ public interface Material extends Keyed {
     POTTED_RED_TULIP(28594);
     POTTED_SPRUCE_SAPLING(29498);
     POTTED_WHITE_TULIP(24330);*/
-    Material POWERED_RAIL = new BlockMaterial(BlockTypes.GOLDEN_RAIL, "POWERED_RAIL");
+    public static final Material POWERED_RAIL = new BlockMaterial(BlockTypes.GOLDEN_RAIL, "POWERED_RAIL");
     /*PRISMARINE(7539);
     PRISMARINE_BRICKS(29118);
     PRISMARINE_BRICK_SLAB(26672, Slab.class);
@@ -660,8 +667,8 @@ public interface Material extends Keyed {
     PUFFERFISH(8115);
     PUFFERFISH_BUCKET(8861, 1);
     PUFFERFISH_SPAWN_EGG(24573);*/
-    Material PUMPKIN = new ItemMaterial(ItemTypes.PUMPKIN, "PUMPKIN");
-    Material PUMPKIN_PIE = new ItemMaterial(ItemTypes.PUMPKIN_PIE, "PUMPKIN_PIE");
+    public static final Material PUMPKIN = new ItemMaterial(ItemTypes.PUMPKIN, "PUMPKIN");
+    public static final Material PUMPKIN_PIE = new ItemMaterial(ItemTypes.PUMPKIN_PIE, "PUMPKIN_PIE");
     /*PUMPKIN_SEEDS(28985);
     PUMPKIN_STEM(19021, Ageable.class);
     PURPLE_BANNER(29027, 16, Rotatable.class);
@@ -675,30 +682,30 @@ public interface Material extends Keyed {
     PURPLE_STAINED_GLASS(21845);
     PURPLE_STAINED_GLASS_PANE(10948, GlassPane.class);
     PURPLE_TERRACOTTA(10387);
-    PURPLE_WALL_BANNER(14298, Directional.class);
-    PURPLE_WOOL(11922);
-    PURPUR_BLOCK(7538);
+    PURPLE_WALL_BANNER(14298, Directional.class);*/
+    public static final Material PURPLE_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.PURPLE).get(), "PURPLE_WOOL");
+    /*PURPUR_BLOCK(7538);
     PURPUR_PILLAR(26718, Orientable.class);
     PURPUR_SLAB(11487, Slab.class);
     PURPUR_STAIRS(8921, Stairs.class);*/
-    Material QUARTZ = new ItemMaterial(ItemTypes.QUARTZ, "QUARTZ");
-    Material QUARTZ_BLOCK = new BlockMaterial(BlockTypes.QUARTZ_BLOCK, "QUARTZ_BLOCK");
-    //Material QUARTZ_PILLAR = new BlockMaterial(BlockTypes.);
+    public static final Material QUARTZ = new ItemMaterial(ItemTypes.QUARTZ, "QUARTZ");
+    public static final Material QUARTZ_BLOCK = new BlockMaterial(BlockTypes.QUARTZ_BLOCK, "QUARTZ_BLOCK");
+    //public static final Material QUARTZ_PILLAR = new BlockMaterial(BlockTypes.);
     //QUARTZ_SLAB(4423, Slab.class);
     //QUARTZ_STAIRS(24079, Stairs.class);
-    Material RABBIT = new ItemMaterial(ItemTypes.RABBIT, "RABBIT");
-    Material RABBIT_FOOT = new ItemMaterial(ItemTypes.RABBIT_FOOT, "RABBIT_FOOT");
-    Material RABBIT_HIDE = new ItemMaterial(ItemTypes.RABBIT_HIDE, "RABBIT_HIDE");
+    public static final Material RABBIT = new ItemMaterial(ItemTypes.RABBIT, "RABBIT");
+    public static final Material RABBIT_FOOT = new ItemMaterial(ItemTypes.RABBIT_FOOT, "RABBIT_FOOT");
+    public static final Material RABBIT_HIDE = new ItemMaterial(ItemTypes.RABBIT_HIDE, "RABBIT_HIDE");
     /*RABBIT_SPAWN_EGG(26496);
     RABBIT_STEW(10611, 1);*/
-    Material RAIL = new ItemMaterial(ItemTypes.RAIL, "RAIL");
-    Material REDSTONE = new ItemMaterial(ItemTypes.REDSTONE, "REDSTONE");
-    Material REDSTONE_BLOCK = new BlockMaterial(BlockTypes.REDSTONE_BLOCK, "REDSTONE_BLOCK");
-    Material REDSTONE_LAMP = new BlockMaterial(BlockTypes.REDSTONE_LAMP, "REDSTONE_LAMP");
-    Material REDSTONE_ORE = new BlockMaterial(BlockTypes.REDSTONE_ORE, "REDSTONE_ORE");
-    Material REDSTONE_TORCH = new BlockMaterial(BlockTypes.REDSTONE_TORCH, "REDSTONE_TORCH");
+    public static final Material RAIL = new ItemMaterial(ItemTypes.RAIL, "RAIL");
+    public static final Material REDSTONE = new ItemMaterial(ItemTypes.REDSTONE, "REDSTONE");
+    public static final Material REDSTONE_BLOCK = new BlockMaterial(BlockTypes.REDSTONE_BLOCK, "REDSTONE_BLOCK");
+    public static final Material REDSTONE_LAMP = new BlockMaterial(BlockTypes.REDSTONE_LAMP, "REDSTONE_LAMP");
+    public static final Material REDSTONE_ORE = new BlockMaterial(BlockTypes.REDSTONE_ORE, "REDSTONE_ORE");
+    public static final Material REDSTONE_TORCH = new BlockMaterial(BlockTypes.REDSTONE_TORCH, "REDSTONE_TORCH");
     //REDSTONE_WALL_TORCH(7595, RedstoneWallTorch.class);
-    Material REDSTONE_WIRE = new BlockMaterial(BlockTypes.REDSTONE_WIRE, "REDSTONE_WIRE");
+    public static final Material REDSTONE_WIRE = new BlockMaterial(BlockTypes.REDSTONE_WIRE, "REDSTONE_WIRE");
     /*RED_BANNER(26961, 16, Rotatable.class);
     RED_BED(30910, 1, Bed.class);
     RED_CARPET(5424);
@@ -717,9 +724,9 @@ public interface Material extends Keyed {
     RED_STAINED_GLASS_PANE(8630, GlassPane.class);
     RED_TERRACOTTA(5086);
     RED_TULIP(16781);
-    RED_WALL_BANNER(4378, Directional.class);
-    RED_WOOL(11621);*/
-    Material REPEATER = new BlockMaterial(BlockTypes.UNPOWERED_REPEATER, "REPEATER");
+    RED_WALL_BANNER(4378, Directional.class);*/
+    public static final Material RED_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.RED).get(), "RED_WOOL");
+    public static final Material REPEATER = new BlockMaterial(BlockTypes.UNPOWERED_REPEATER, "REPEATER");
     /*REPEATING_COMMAND_BLOCK(12405, CommandBlock.class);
     ROSE_BUSH(6080, Bisected.class);
     ROSE_RED(15694);
@@ -728,26 +735,26 @@ public interface Material extends Keyed {
     SALMON(18516);
     SALMON_BUCKET(31427, 1);
     SALMON_SPAWN_EGG(18739);*/
-    Material SAND = new BlockMaterial(BlockTypes.SAND, "SAND");
-    Material SANDSTONE = new BlockMaterial(BlockTypes.SANDSTONE, "SANDSTONE");
+    public static final Material SAND = new BlockMaterial(BlockTypes.SAND, "SAND");
+    public static final Material SANDSTONE = new BlockMaterial(BlockTypes.SANDSTONE, "SANDSTONE");
     //SANDSTONE_SLAB(29830, Slab.class);
     //SANDSTONE_STAIRS(18474, Stairs.class);
     //SCUTE(11914);
     //SEAGRASS(23942);
     //SEA_LANTERN(16984);
     //SEA_PICKLE(19562, SeaPickle.class);
-    Material SHEARS = new ItemMaterial(ItemTypes.SHEARS, "SHEARS");
+    public static final Material SHEARS = new ItemMaterial(ItemTypes.SHEARS, "SHEARS");
     //SHEEP_SPAWN_EGG(24488);
-    Material SHIELD = new ItemMaterial(ItemTypes.SHIELD, "SHIELD");
-    //Material SHULKER_BOX = new BlockMaterial(ItemTypes.SHULKER_BOX);
-    Material SHULKER_SHELL = new ItemMaterial(ItemTypes.SHULKER_SHELL, "SHULKER_SHELL");
+    public static final Material SHIELD = new ItemMaterial(ItemTypes.SHIELD, "SHIELD");
+    //public static final Material SHULKER_BOX = new BlockMaterial(ItemTypes.SHULKER_BOX);
+    public static final Material SHULKER_SHELL = new ItemMaterial(ItemTypes.SHULKER_SHELL, "SHULKER_SHELL");
     //SHULKER_SPAWN_EGG(31848);
-    Material SIGN = new BlockMaterial(BlockTypes.STANDING_SIGN, "SIGN");
+    public static final Material SIGN = new BlockMaterial(BlockTypes.STANDING_SIGN, "SIGN");
     /*SILVERFISH_SPAWN_EGG(14537);
     SKELETON_HORSE_SPAWN_EGG(21356);*/
-    Material SKELETON_SKULL = new ItemMaterial(ItemTypes.SKULL, "SKELETON_SKULL");
+    public static final Material SKELETON_SKULL = new ItemMaterial(ItemTypes.SKULL, "SKELETON_SKULL");
     //SKELETON_SPAWN_EGG(15261);
-    Material SKELETON_WALL_SKULL = new ItemMaterial(ItemTypes.SKULL, "SKELETON_WALL_SKULL");
+    public static final Material SKELETON_WALL_SKULL = new ItemMaterial(ItemTypes.SKULL, "SKELETON_WALL_SKULL");
     /*SLIME_BALL(5242);
     SLIME_BLOCK(31892);
     SLIME_SPAWN_EGG(6550);
@@ -763,7 +770,7 @@ public interface Material extends Keyed {
     SPECTRAL_ARROW(4568);
     SPIDER_EYE(9318);
     SPIDER_SPAWN_EGG(14984);*/
-    Material SPLASH_POTION = new ItemMaterial(ItemTypes.SPLASH_POTION, "SPLASH_POTION");
+    public static final Material SPLASH_POTION = new ItemMaterial(ItemTypes.SPLASH_POTION, "SPLASH_POTION");
     /*SPONGE(15860);
     SPRUCE_BOAT(9606, 1);
     SPRUCE_BUTTON(23281, Switch.class);
@@ -781,19 +788,19 @@ public interface Material extends Keyed {
     SPRUCE_WOOD(32328, Orientable.class);
     SQUID_SPAWN_EGG(10682);
     STICK(9773);*/
-    Material STICKY_PISTON = new BlockMaterial(BlockTypes.STICKY_PISTON, "STICKY_PISTON");
-    //STONE(22948);
-    Material STONE_AXE = new ItemMaterial(ItemTypes.STONE_AXE, "STONE_AXE");
+    public static final Material STICKY_PISTON = new BlockMaterial(BlockTypes.STICKY_PISTON, "STICKY_PISTON");
+    public static final Material STONE = new BlockMaterial(BlockTypes.STONE, "STONE");
+    public static final Material STONE_AXE = new ItemMaterial(ItemTypes.STONE_AXE, "STONE_AXE");
     /*STONE_BRICKS(6962);
     STONE_BRICK_SLAB(19676, Slab.class);
-    STONE_BRICK_STAIRS(27032, Stairs.class);
-    STONE_BUTTON(12279, Switch.class);*/
-    Material STONE_HOE = new ItemMaterial(ItemTypes.STONE_HOE, "STONE_HOE");
-    Material STONE_PICKAXE = new ItemMaterial(ItemTypes.STONE_PICKAXE, "STONE_PICKAXE");
-    //STONE_PRESSURE_PLATE(22591, Powerable.class);
-    Material STONE_SHOVEL = new ItemMaterial(ItemTypes.STONE_SHOVEL, "STONE_SHOVEL");
+    STONE_BRICK_STAIRS(27032, Stairs.class);*/
+    public static final Material STONE_BUTTON = new BlockMaterial(BlockTypes.STONE_BUTTON, "STONE_BUTTON");
+    public static final Material STONE_HOE = new ItemMaterial(ItemTypes.STONE_HOE, "STONE_HOE");
+    public static final Material STONE_PICKAXE = new ItemMaterial(ItemTypes.STONE_PICKAXE, "STONE_PICKAXE");
+    public static final Material STONE_PRESSURE_PLATE = new BlockMaterial(BlockTypes.STONE_PRESSURE_PLATE, "STONE_PRESSURE_PLATE");
+    public static final Material STONE_SHOVEL = new ItemMaterial(ItemTypes.STONE_SHOVEL, "STONE_SHOVEL");
     //STONE_SLAB(19838, Slab.class);
-    Material STONE_SWORD = new ItemMaterial(ItemTypes.STONE_SWORD, "STONE_SWORD");
+    public static final Material STONE_SWORD = new ItemMaterial(ItemTypes.STONE_SWORD, "STONE_SWORD");
     /*STRAY_SPAWN_EGG(30153);
     STRING(12806);
     STRIPPED_ACACIA_LOG(18167, Orientable.class);
@@ -817,12 +824,12 @@ public interface Material extends Keyed {
     TALL_SEAGRASS(27189, Bisected.class);
     TERRACOTTA(16544);
     TIPPED_ARROW(25164);*/
-    Material TNT = new BlockMaterial(BlockTypes.TNT, "TNT");
-    /*TNT_MINECART(4277, 1);
-    TORCH(6063);
+    public static final Material TNT = new BlockMaterial(BlockTypes.TNT, "TNT");
+    public static final Material TNT_MINECART = new ItemMaterial(ItemTypes.TNT_MINECART, "TNT_MINECART");
+    /*TORCH(6063);
     TOTEM_OF_UNDYING(10139, 1);*/
-    Material TRAPPED_CHEST = new ItemMaterial(ItemTypes.TRAPPED_CHEST, "TRAPPED_CHEST");
-    Material TRIDENT = new ItemMaterial(ItemTypes.WOODEN_SWORD, "TRIDENT"); //temp item - 1.12 doesnt have but is required for 1.13 API);
+    public static final Material TRAPPED_CHEST = new ItemMaterial(ItemTypes.TRAPPED_CHEST, "TRAPPED_CHEST");
+    public static final Material TRIDENT = new ItemMaterial(ItemTypes.WOODEN_SWORD, "TRIDENT"); //temp item - 1.12 doesnt have but is required for 1.13 API);
     /*TRIPWIRE(8810, Tripwire.class);
     TRIPWIRE_HOOK(8130, TripwireHook.class);
     TROPICAL_FISH(24879);
@@ -836,17 +843,17 @@ public interface Material extends Keyed {
     TURTLE_HELMET(30120, 1, 275);
     TURTLE_SPAWN_EGG(17324);
     VEX_SPAWN_EGG(27751);
-    public static final Material VILLAGER_SPAWN_EGG = new ItemMaterial(ItemTypes.SPAWN_EGG, "VILLAGER_SPAWN_EGG");
+    public static final public static final Material VILLAGER_SPAWN_EGG = new ItemMaterial(ItemTypes.SPAWN_EGG, "VILLAGER_SPAWN_EGG");
     VINDICATOR_SPAWN_EGG(25324);
     VINE(14564, MultipleFacing.class);
     VOID_AIR(13668);*/
-    Material WALL_SIGN = new BlockMaterial(BlockTypes.WALL_SIGN, "WALL_SIGN");
+    public static final Material WALL_SIGN = new BlockMaterial(BlockTypes.WALL_SIGN, "WALL_SIGN");
     /*WALL_TORCH(25890, Directional.class);*/
-    Material WATER = new BlockMaterial(BlockTypes.WATER, "WATER");
+    public static final Material WATER = new BlockMaterial(BlockTypes.WATER, "WATER");
     /*WATER_BUCKET(8802, 1);
-    WET_SPONGE(9043);
-    WHEAT(27709, Ageable.class);
-    WHEAT_SEEDS(28742);
+    WET_SPONGE(9043);*/
+    public static final Material WHEAT = new BlockMaterial(BlockTypes.WHEAT, "WHEAT");
+    /*WHEAT_SEEDS(28742);
     WHITE_BANNER(17562, 16, Rotatable.class);
     WHITE_BED(8185, 1, Bed.class);
     WHITE_CARPET(15117);
@@ -859,19 +866,19 @@ public interface Material extends Keyed {
     WHITE_TERRACOTTA(20975);
     WHITE_TULIP(9742);
     WHITE_WALL_BANNER(15967, Directional.class);*/
-    Material WHITE_WOOL = new BlockMaterial(BlockTypes.WOOL, "WHITE_WOOL");
+    public static final Material WHITE_WOOL = new BlockMaterial(BlockTypes.WOOL, "WHITE_WOOL");
     //WITCH_SPAWN_EGG(11837);
-    Material WITHER_SKELETON_SKULL = new BlockMaterial(BlockTypes.SKULL, "WITHER_SKELETON_SKULL");
+    public static final Material WITHER_SKELETON_SKULL = new BlockMaterial(BlockTypes.SKULL, "WITHER_SKELETON_SKULL");
     //WITHER_SKELETON_SPAWN_EGG(10073);
-    Material WITHER_SKELETON_WALL_SKULL = new BlockMaterial(BlockTypes.SKULL, "WITHER_SKELETON_WALL_SKULL");
+    public static final Material WITHER_SKELETON_WALL_SKULL = new BlockMaterial(BlockTypes.SKULL, "WITHER_SKELETON_WALL_SKULL");
     //WOLF_SPAWN_EGG(21692);
-    Material WOODEN_AXE = new ItemMaterial(ItemTypes.WOODEN_AXE, "WOODEN_AXE");
-    Material WOODEN_HOE = new ItemMaterial(ItemTypes.WOODEN_HOE, "WOODEN_HOE");
-    Material WOODEN_PICKAXE = new ItemMaterial(ItemTypes.WOODEN_PICKAXE, "WOODEN_PICKAXE");
-    Material WOODEN_SHOVEL = new ItemMaterial(ItemTypes.WOODEN_SHOVEL, "WOODEN_SHOVEL");
-    Material WOODEN_SWORD = new ItemMaterial(ItemTypes.WOODEN_SWORD, "WOODEN_SWORD");
-    Material WRITABLE_BOOK = new ItemMaterial(ItemTypes.WRITABLE_BOOK, "WRITABLE_BOOK");
-    Material WRITTEN_BOOK = new ItemMaterial(ItemTypes.WRITTEN_BOOK, "WRITTEN_BOOK");
+    public static final Material WOODEN_AXE = new ItemMaterial(ItemTypes.WOODEN_AXE, "WOODEN_AXE");
+    public static final Material WOODEN_HOE = new ItemMaterial(ItemTypes.WOODEN_HOE, "WOODEN_HOE");
+    public static final Material WOODEN_PICKAXE = new ItemMaterial(ItemTypes.WOODEN_PICKAXE, "WOODEN_PICKAXE");
+    public static final Material WOODEN_SHOVEL = new ItemMaterial(ItemTypes.WOODEN_SHOVEL, "WOODEN_SHOVEL");
+    public static final Material WOODEN_SWORD = new ItemMaterial(ItemTypes.WOODEN_SWORD, "WOODEN_SWORD");
+    public static final Material WRITABLE_BOOK = new ItemMaterial(ItemTypes.WRITABLE_BOOK, "WRITABLE_BOOK");
+    public static final Material WRITTEN_BOOK = new ItemMaterial(ItemTypes.WRITTEN_BOOK, "WRITTEN_BOOK");
     /*YELLOW_BANNER(30382, 16, Rotatable.class);
     YELLOW_BED(30410, 1, Bed.class);
     YELLOW_CARPET(18149);
@@ -882,77 +889,85 @@ public interface Material extends Keyed {
     YELLOW_STAINED_GLASS(12182);
     YELLOW_STAINED_GLASS_PANE(20298, GlassPane.class);
     YELLOW_TERRACOTTA(32129);
-    YELLOW_WALL_BANNER(32004, Directional.class);
-    YELLOW_WOOL(29507);*/
-    Material ZOMBIE_HEAD = new BlockMaterial(BlockTypes.SKULL, "ZOMBIE_HEAD"); //required for Bukkit API 1.13
+    YELLOW_WALL_BANNER(32004, Directional.class);*/
+    public static final Material YELLOW_WOOL = new ExtendedBlockMaterial(BlockTypes.WOOL.getDefaultState().with(Keys.DYE_COLOR, DyeColors.YELLOW).get(), "YELLOW_WOOL");
+    public static final Material ZOMBIE_HEAD = new BlockMaterial(BlockTypes.SKULL, "ZOMBIE_HEAD"); //required for Bukkit API 1.13
     /*ZOMBIE_HORSE_SPAWN_EGG(4275);
     ZOMBIE_PIGMAN_SPAWN_EGG(11531);
     ZOMBIE_SPAWN_EGG(5814);
     ZOMBIE_VILLAGER_SPAWN_EGG(10311);
     ZOMBIE_WALL_HEAD = new BlockMaterial(BlockTypes.SKULL);*/
-    Material UNKNOWN = new UnknownMaterial();
+    public static final Material UNKNOWN = new UnknownMaterial();
 
     @Override
     @NotNull
-    NamespacedKey getKey();
-    String name();
-    int getMaxStackSize();
-    short getMaxDurability();
+    public abstract NamespacedKey getKey();
+    public abstract String name();
+    public abstract int getMaxStackSize();
+    public abstract short getMaxDurability();
     @Deprecated
-    Class<? extends MaterialData> getData();
+    public abstract Class<? extends MaterialData> getData();
     @Deprecated
-    MaterialData getNewData(final byte raw);
-    boolean isBlock();
-    boolean isEdible();
-    boolean isRecord();
-    boolean isSolid();
+    public abstract MaterialData getNewData(final byte raw);
+    public abstract boolean isBlock();
+    public abstract boolean isEdible();
+    public abstract boolean isRecord();
+    public abstract boolean isSolid();
     @Deprecated
-    boolean isTransparent();
-    boolean isFlammable();
-    boolean isBurnable();
-    boolean isFuel();
-    boolean isOccluding();
-    boolean hasGravity();
-    boolean isItem();
-    boolean isInteractable();
-    float getHardness();
-    float getBlastResistance();
+    public abstract boolean isTransparent();
+    public abstract boolean isFlammable();
+    public abstract boolean isBurnable();
+    public abstract boolean isFuel();
+    public abstract boolean isOccluding();
+    public abstract boolean hasGravity();
+    public abstract boolean isItem();
+    public abstract boolean isInteractable();
+    public abstract float getHardness();
+    public abstract float getBlastResistance();
 
     @Deprecated
-    default int getId() {
+    public int getId() {
         return -1;
     }
 
     @Deprecated
-    default boolean isLegacy() {
+    public boolean isLegacy() {
         return false;
     }
 
-    default BlockData createBlockData() {
-        return Bukkit.createBlockData(this);
+    public abstract BlockData createBlockData();
+
+    public abstract BlockData createBlockData(Consumer<BlockData> consumer);
+
+    public abstract BlockData createBlockData(String data) throws IllegalArgumentException;
+
+    @Override
+    public boolean equals(Object obj){
+        if(!(obj instanceof Material)){
+            return false;
+        }
+        Material material = (Material)obj;
+        return material.name().equalsIgnoreCase(this.name());
     }
 
-    default BlockData createBlockData(Consumer<BlockData> consumer) {
-        return Bukkit.createBlockData(this, consumer);
+    @Override
+    public String toString(){
+        return this.name();
     }
 
-    default BlockData createBlockData(String data) throws IllegalArgumentException {
-        return Bukkit.createBlockData(this, data);
-    }
-
-    static Material getMaterial(final String name) {
+    public static final Material getMaterial(final String name) {
         return getMaterial(name, false);
     }
 
-    static Material getMaterial(String name, boolean legacyName) {
+    public static Material getMaterial(String name, boolean legacyName) {
         return Material.valueOf(name.toUpperCase());
     }
 
-    static Material matchMaterial(final String name) {
+    public static Material matchMaterial(final String name) {
         return matchMaterial(name, false);
     }
 
-    static Material matchMaterial(String name, boolean legacyName) {
+    public static Material matchMaterial(String name, boolean legacyName) {
         return valueOf(m -> {
             NamespacedKey key = m.getKey();
             if(key.toString().equalsIgnoreCase(name)){
@@ -962,21 +977,16 @@ public interface Material extends Keyed {
         });
     }
 
-    static Material valueOf(Predicate<Material> material){
+    public static final Material valueOf(Predicate<Material> material){
         return Stream.of(values()).filter(material).findAny().orElse(null);
     }
 
-    static Material valueOf(String name){
+    public static final Material valueOf(String name){
         return valueOf(m -> m.name().equals(name));
     }
 
-    static Material[] values(){
+    public static final Material[] values(){
         Set<Material> set = Bonge.getInstance().getMaterials();
-        set.stream().forEach(s -> {
-            if(s.getClass().getName().equals(Material.class.getName())){
-                System.out.println(s);
-            }
-        });
         return set.toArray(new Material[set.size()]);
     }
 }

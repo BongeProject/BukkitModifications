@@ -2,7 +2,7 @@ package org.bukkit.plugin.java;
 
 import com.google.common.base.Charsets;
 import org.bonge.bukkit.r1_13.server.plugin.BongePluginManager;
-import org.bonge.bukkit.r1_13.server.plugin.loader.BongePluginLoader;
+import org.bonge.bukkit.r1_13.server.plugin.loader.BongeURLClassLoader;
 import org.bonge.bukkit.r1_13.server.plugin.loader.IBongePluginLoader;
 import org.bonge.config.BongeConfig;
 import org.bonge.launch.BongeLaunch;
@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -28,7 +29,7 @@ import java.util.regex.Pattern;
 
 public abstract class JavaPlugin extends PluginBase {
 
-    private BongePluginLoader loader;
+    private JavaPluginLoader loader;
     private FileConfiguration storedConfig;
     private UUID uuid;
 
@@ -139,12 +140,12 @@ public abstract class JavaPlugin extends PluginBase {
 
     @Override
     @NotNull
-    public BongePluginLoader getPluginLoader() {
+    public JavaPluginLoader getPluginLoader() {
         if(this.loader != null){
             return this.loader;
         }
         Optional<IBongePluginLoader> opPlugin = ((BongePluginManager)Bukkit.getServer().getPluginManager()).getPluginLoader(this);
-        return (BongePluginLoader) opPlugin.get();
+        return (JavaPluginLoader) opPlugin.get();
     }
 
     @NotNull
@@ -192,7 +193,7 @@ public abstract class JavaPlugin extends PluginBase {
     @NotNull
     @Override
     public Logger getLogger() {
-        return BongeLaunch.getLogger();
+        return Logger.getLogger("[" + this.getName() + "]");
     }
 
     @Nullable
@@ -216,14 +217,14 @@ public abstract class JavaPlugin extends PluginBase {
     @Nullable
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-        return null;
+        return new ArrayList<>();
     }
 
-    public void setLoader(BongePluginLoader loader){
+    public void setLoader(JavaPluginLoader loader){
         this.loader = loader;
     }
 
-    public ClassLoader getClassLoader(){
+    public BongeURLClassLoader getClassLoader(){
         return ((BongePluginManager)Bukkit.getServer().getPluginManager()).getLoader();
     }
 
