@@ -20,7 +20,7 @@ public class Chest extends DirectionalContainer {
     }
 
     public Chest(){
-        this(BlockTypes.CHEST.getDefaultState());
+        this(BlockTypes.CHEST.get().getDefaultState());
     }
 
     public Chest(BlockFace face){

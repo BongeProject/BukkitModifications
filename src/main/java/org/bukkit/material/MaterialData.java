@@ -66,10 +66,10 @@ public class MaterialData extends BongeWrapper<BlockState> implements Cloneable 
     }
 
     public static MaterialData getData(BlockState state){
-        if(state.getType().equals(BlockTypes.STANDING_SIGN) || state.getType().equals(BlockTypes.WALL_SIGN)){
+        if(state.getType().equals(BlockTypes.OAK_SIGN.get()) || state.getType().equals(BlockTypes.OAK_WALL_SIGN.get())){
             return new Sign(state);
         }
-        if(state.getType().equals(BlockTypes.CHEST) || state.getType().equals(BlockTypes.TRAPPED_CHEST)){
+        if(state.getType().equals(BlockTypes.CHEST.get()) || state.getType().equals(BlockTypes.TRAPPED_CHEST.get())){
             return new Chest(state);
         }
         return new MaterialData(state);
