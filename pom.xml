@@ -11,12 +11,12 @@
 
     <artifactId>ModifiedBukkitAPI</artifactId>
     <groupId>org.bonge</groupId>
-    <version>1.13.2-R0.1-SNAPSHOT</version>
+    <version>1.14.4-R0.1-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.13.2-R0.1-SNAPSHOT</version>
+            <version>1.14.4-R0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

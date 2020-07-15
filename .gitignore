@@ -7,6 +7,9 @@
 
 # IntelliJ
 out/
+target/
+ModifiedBukkitAPI.iml
+.gitignore
 
 # Compiled class file
 *.class

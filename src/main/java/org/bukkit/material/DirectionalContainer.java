@@ -5,13 +5,14 @@ import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.api.block.BlockState;
-import org.spongepowered.api.data.key.Keys;
+import org.spongepowered.api.data.Keys;
 import org.spongepowered.api.util.Direction;
 
 import java.io.IOException;
 
 @Deprecated
 public class DirectionalContainer extends MaterialData implements Directional {
+
     public DirectionalContainer(BlockState value) {
         super(value);
     }

@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.block.BlockTypes;
-import org.spongepowered.api.data.key.Keys;
+import org.spongepowered.api.data.Keys;
 import org.spongepowered.api.util.Direction;
 
 import java.io.IOException;
@@ -23,12 +23,12 @@ public class Sign extends MaterialData implements Attachable {
     }
 
     public Sign(){
-        this(BlockTypes.STANDING_SIGN.getDefaultState());
+        this(BlockTypes.OAK_SIGN.get().getDefaultState());
     }
 
     @Override
     public @NotNull BlockFace getAttachedFace() {
-        if(this.getSpongeValue().getType().equals(BlockTypes.STANDING_SIGN)){
+        if(this.getSpongeValue().getType().equals(BlockTypes.OAK_SIGN.get())){
             return BlockFace.DOWN;
         }
         return this.getFacing().getOppositeFace();

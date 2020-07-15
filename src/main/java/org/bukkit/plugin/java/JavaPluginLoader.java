@@ -1,14 +1,13 @@
 package org.bukkit.plugin.java;
 
-import org.bonge.bukkit.r1_13.server.plugin.loader.BongeURLClassLoader;
-import org.bonge.bukkit.r1_13.server.plugin.loader.IBongePluginLoader;
+import org.bonge.bukkit.r1_14.server.plugin.loader.BongeURLClassLoader;
+import org.bonge.bukkit.r1_14.server.plugin.loader.IBongePluginLoader;
 import org.bukkit.event.Event;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.RegisteredListener;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
