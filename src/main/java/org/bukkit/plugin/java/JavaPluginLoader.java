@@ -2,6 +2,8 @@ package org.bukkit.plugin.java;
 
 import org.bonge.bukkit.r1_14.server.plugin.loader.BongeURLClassLoader;
 import org.bonge.bukkit.r1_14.server.plugin.loader.IBongePluginLoader;
+import org.bukkit.Bukkit;
+import org.bukkit.Server;
 import org.bukkit.event.Event;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.InvalidDescriptionException;
@@ -26,6 +28,7 @@ public class JavaPluginLoader implements IBongePluginLoader {
     private boolean isEnabled;
     private PluginDescriptionFile descriptionFile;
     private BongeURLClassLoader loader;
+    public Server server = Bukkit.getServer();
 
     public JavaPluginLoader(File file, BongeURLClassLoader loader) {
         this.file = file;
@@ -34,6 +37,18 @@ public class JavaPluginLoader implements IBongePluginLoader {
 
     public Set<Class<?>> getClasses(){
         return this.classes;
+    }
+
+    public void setClass(String name, Class<?> clazz){
+        Class<?> clazz1 = this.getClassByName(name);
+        if(clazz1 != null) {
+            this.classes.remove(clazz1);
+        }
+        this.classes.add(clazz);
+    }
+
+    public Class<?> getClassByName(String name){
+        return this.getClasses().stream().filter(c -> c.getSimpleName().equalsIgnoreCase(name)).findAny().orElse(null);
     }
 
     public boolean isEnabled(){

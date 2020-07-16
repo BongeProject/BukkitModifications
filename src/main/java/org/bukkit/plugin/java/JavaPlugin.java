@@ -37,6 +37,11 @@ public abstract class JavaPlugin extends PluginBase {
         this.uuid = UUID.randomUUID();
     }
 
+    //THIS IS ONLY TO COMPILE, ITS NOT REALLY USED
+    public void init(JavaPluginLoader loader, Server server, PluginDescriptionFile description, File location, File file, PluginClassLoader cLoader){
+        this.loader = loader;
+    }
+
     public File getConfigFile(){
         return new File(getDataFolder(), "config.yml");
     }
