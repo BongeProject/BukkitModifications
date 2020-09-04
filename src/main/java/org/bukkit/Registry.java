@@ -1,24 +1,20 @@
 package org.bukkit;
 
+import org.array.utils.ArrayUtils;
 import org.bonge.Bonge;
-import org.bonge.util.ArrayUtils;
 import org.bukkit.advancement.Advancement;
 import org.bukkit.block.Biome;
-import org.bukkit.boss.KeyedBossBar;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
-import org.bukkit.entity.memory.MemoryKey;
-import org.bukkit.loot.LootTable;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.api.CatalogType;
 import org.spongepowered.api.ResourceKey;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.advancement.AdvancementType;
 import org.spongepowered.api.data.type.ArtType;
-import org.spongepowered.api.data.type.Profession;
+import org.spongepowered.api.data.type.ProfessionType;
 import org.spongepowered.api.data.type.VillagerType;
-import org.spongepowered.api.data.type.VillagerTypes;
 import org.spongepowered.api.item.enchantment.EnchantmentType;
 import org.spongepowered.api.world.biome.BiomeType;
 
@@ -39,7 +35,7 @@ public interface Registry<T extends Keyed> extends Iterable<T> {
     //TODO find sponge loot table Registry<LootTable> LOOT_TABLES = new SimpleRegistry<>(LootTable.class, org.spongepowered.api.util.weighted.LootTable.class);
     Registry<Statistic> STATISTIC = new SimpleRegistry<>(Statistic.class, org.spongepowered.api.statistic.Statistic.class);
     Registry<Material> MATERIAL = new SimpleListRegistry<>(() -> Arrays.asList(Material.values()));
-    Registry<Villager.Profession> VILLAGER_PROFESSION = new SimpleRegistry<>(Villager.Profession.class, Profession.class);
+    Registry<Villager.Profession> VILLAGER_PROFESSION = new SimpleRegistry<>(Villager.Profession.class, ProfessionType.class);
     Registry<Villager.Type> VILLAGER_TYPE = new SimpleRegistry<>(Villager.Type.class, VillagerType.class);
     //TODO find sponge alternative Registry<MemoryKey> MEMORY_MODULE_TYPE = new SimpleRegistry<>(MemoryKey.class, );
 

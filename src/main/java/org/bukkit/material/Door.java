@@ -8,8 +8,8 @@ import org.bukkit.block.BlockFace;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.api.block.BlockTypes;
 import org.spongepowered.api.data.Keys;
-import org.spongepowered.api.data.type.Hinge;
-import org.spongepowered.api.data.type.Hinges;
+import org.spongepowered.api.data.type.DoorHinge;
+import org.spongepowered.api.data.type.DoorHinges;
 import org.spongepowered.api.data.type.SlabPortion;
 import org.spongepowered.api.data.type.SlabPortions;
 
@@ -74,15 +74,15 @@ public class Door extends MaterialData implements Directional, Openable {
     }
 
     public boolean getHinge(){
-        Hinge hinge = this.spongeValue.get(Keys.HINGE_POSITION).get();
-        if(hinge.equals(Hinges.RIGHT.get())){
+        DoorHinge hinge = this.spongeValue.get(Keys.DOOR_HINGE).get();
+        if(hinge.equals(DoorHinges.RIGHT.get())){
             return true;
         }
         return false;
     }
 
     public void setHinge(boolean hinge){
-        this.spongeValue = this.spongeValue.with(Keys.HINGE_POSITION, hinge ? Hinges.RIGHT.get() : Hinges.LEFT.get()).get();
+        this.spongeValue = this.spongeValue.with(Keys.DOOR_HINGE, hinge ? DoorHinges.RIGHT.get() : DoorHinges.LEFT.get()).get();
     }
 
     @Override
