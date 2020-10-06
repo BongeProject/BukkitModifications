@@ -1,7 +1,7 @@
 package org.bukkit.command;
 
 import org.bonge.Bonge;
-import org.bonge.bukkit.r1_14.command.CommandState;
+import org.bonge.bukkit.r1_15.command.CommandState;
 import org.spongepowered.api.command.Command;
 import org.spongepowered.api.command.CommandExecutor;
 import org.spongepowered.api.command.CommandResult;
@@ -18,7 +18,7 @@ public class SpongeCommandWrapping implements CommandExecutor {
 
     public SpongeCommandWrapping(CommandState state){
         this.state = state;
-        this.commandArguments = Parameter.remainingJoinedStrings().setSuggestions(context -> {
+        this.commandArguments = Parameter.remainingJoinedStrings().setSuggestions((context, input) -> {
             Collection<? extends String> args = context.getAll(SpongeCommandWrapping.this.commandArguments);
 
             CommandSender sender;

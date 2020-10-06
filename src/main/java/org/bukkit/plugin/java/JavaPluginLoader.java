@@ -1,7 +1,7 @@
 package org.bukkit.plugin.java;
 
-import org.bonge.bukkit.r1_14.server.plugin.loader.BongeURLClassLoader;
-import org.bonge.bukkit.r1_14.server.plugin.loader.IBongePluginLoader;
+import org.bonge.bukkit.r1_15.server.plugin.loader.BongeURLClassLoader;
+import org.bonge.bukkit.r1_15.server.plugin.loader.IBongePluginLoader;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.event.Event;
